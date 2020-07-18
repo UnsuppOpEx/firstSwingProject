@@ -1,4 +1,6 @@
 package swingProject.gui.menu;
 
-public class ApplicationMenu {
+import javax.swing.*;
+
+public class ApplicationMenu extends JMenuBar {
 }

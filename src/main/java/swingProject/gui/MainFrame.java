@@ -1,4 +1,14 @@
 package swingProject.gui;
 
-public class MainFrame {
+import javax.swing.*;
+
+public class MainFrame extends JFrame {
+    private JPanel contentPanel;
+
+    public void setContent(JPanel panel) {
+        this.contentPanel = panel;
+    }
+
+    public MainFrame() {
+    }
 }
