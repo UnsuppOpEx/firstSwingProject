@@ -11,7 +11,6 @@ import java.awt.*;
 
 public class SwingProject {
     public static void main(String[] args) {
-//TODO Не получилось прицепить Нимбус
         try {
             for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
