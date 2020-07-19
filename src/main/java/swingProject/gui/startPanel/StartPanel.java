@@ -6,6 +6,4 @@ import javax.swing.*;
 
 public class StartPanel extends JPanel {
 
-    public StartPanel(MigLayout migLayout) {
-    }
 }
