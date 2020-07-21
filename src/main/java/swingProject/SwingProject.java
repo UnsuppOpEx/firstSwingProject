@@ -1,6 +1,7 @@
 package swingProject;
 
 import swingProject.gui.MainFrame;
+import swingProject.gui.menu.ApplicationMenu;
 import swingProject.gui.startPanel.StartPanel;
 
 import javax.swing.*;
@@ -24,6 +25,7 @@ public class SwingProject {
 
         mainFrame.add(new StartPanel());
         mainFrame.add(label,BorderLayout.PAGE_END); // TODO:перенести label в другой угол.
+        mainFrame.add(new ApplicationMenu(), BorderLayout.NORTH);
         mainFrame.setResizable(false);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
