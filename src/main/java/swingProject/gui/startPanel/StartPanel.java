@@ -1,8 +1,10 @@
 package swingProject.gui.startPanel;
 
 import net.miginfocom.swing.MigLayout;
+import swingProject.gui.menu.ApplicationMenu;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class StartPanel extends JPanel {
     public StartPanel() {

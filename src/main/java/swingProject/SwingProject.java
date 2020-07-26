@@ -5,7 +5,6 @@ import swingProject.gui.startPanel.StartPanel;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import java.awt.*;
 
 public class SwingProject {
     public static void main(String[] args) {
@@ -16,6 +15,7 @@ public class SwingProject {
         }
 
         MainFrame mainFrame = new MainFrame();
+        mainFrame.setContent(new StartPanel());
 
     }
 }
