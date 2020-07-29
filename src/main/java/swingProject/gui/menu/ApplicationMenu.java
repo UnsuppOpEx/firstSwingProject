@@ -46,6 +46,7 @@ public class ApplicationMenu extends JMenuBar {
         jList.add(subMenuList5);
         jMenuCatalog.add(jPc);
         jMenuCatalog.add(jList);
+        jMenuCatalog.addSeparator();
         jMenuCatalog.add(jExit);
         jMenuHelp.add(jRules);
         jMenuHelp.add(jAboutProgram);
