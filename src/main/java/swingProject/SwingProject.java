@@ -2,6 +2,7 @@ package swingProject;
 
 import swingProject.gui.MainFrame;
 import swingProject.gui.startPanel.StartPanel;
+import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
@@ -15,7 +16,7 @@ public class SwingProject {
         }
 
         MainFrame mainFrame = new MainFrame();
-        mainFrame.setContent(new StartPanel());
+        GuiEventHandlers.setMainFrame(mainFrame);
 
     }
 }

@@ -4,10 +4,10 @@ public class Processor extends Component {
     private int frequencyCPU;
     private int countCore;
     private int TDP;
-    private String socket;
+    private Socket socket;
     private String typeSupportRAM;
 
-    public Processor(String manufacturer, String model, int yearRelease, int frequency, int countCore, int TDP, String socket, String typeSupportRAM) {
+    public Processor(String manufacturer, String model, int yearRelease, int frequency, int countCore, int TDP, Socket socket, String typeSupportRAM) {
         super(manufacturer, model, yearRelease);
         this.frequencyCPU = frequency;
         this.countCore = countCore;
@@ -40,11 +40,11 @@ public class Processor extends Component {
         this.TDP = TDP;
     }
 
-    public String getSocket() {
+    public Socket getSocket() {
         return socket;
     }
 
-    public void setSocket(String socket) {
+    public void setSocket(Socket socket) {
         this.socket = socket;
     }
 
@@ -54,5 +54,20 @@ public class Processor extends Component {
 
     public void setTypeSupportRAM(String typeSupportRAM) {
         this.typeSupportRAM = typeSupportRAM;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

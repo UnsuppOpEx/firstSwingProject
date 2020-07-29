@@ -1,14 +1,13 @@
 package swingProject.entities.computerComponents;
 
-import java.util.PrimitiveIterator;
 
 public class Motherboard extends Component {
     private String formFactorMB;
-    private String socket;
+    private Socket socket;
     private String chipset;
     private String typeSupportRAM;
 
-    public Motherboard(String manufacturer, String model, int yearRelease, String formFactorMB, String socket, String chipset, String typeSupportRAM) {
+    public Motherboard(String manufacturer, String model, int yearRelease, String formFactorMB, Socket socket, String chipset, String typeSupportRAM) {
         super(manufacturer, model, yearRelease);
         this.formFactorMB = formFactorMB;
         this.socket = socket;
@@ -24,11 +23,11 @@ public class Motherboard extends Component {
         this.formFactorMB = formFactorMB;
     }
 
-    public String getSocket() {
+    public Socket getSocket() {
         return socket;
     }
 
-    public void setSocket(String socket) {
+    public void setSocket(Socket socket) {
         this.socket = socket;
     }
 
@@ -46,5 +45,20 @@ public class Motherboard extends Component {
 
     public void setTypeSupportRAM(String typeSupportRAM) {
         this.typeSupportRAM = typeSupportRAM;
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

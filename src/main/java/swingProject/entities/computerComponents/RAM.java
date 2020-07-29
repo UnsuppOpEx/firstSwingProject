@@ -55,4 +55,19 @@ public class RAM extends Component {
     public void setVoltage(double voltage) {
         this.voltage = voltage;
     }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

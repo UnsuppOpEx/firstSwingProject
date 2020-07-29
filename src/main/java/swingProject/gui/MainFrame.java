@@ -24,7 +24,19 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    //Отрисовка панели
+    public void SetStartPanelEvent() {
+        setContent(new StartPanel());
+    }
+    //Открыть окно с информацие о программе
+    public void OpenAboutDialogEvent() {
+        JOptionPane.showMessageDialog(this, "Program for home using", "Message", JOptionPane.INFORMATION_MESSAGE);
+    }
+    //Выйти из приложения
+    public void CloseApplicationEvent() {
+        System.exit(-1);
+    }
+    //Отрисовка новой панели
     public void setContent(JPanel panel) {
         contentPanel.removeAll();
         contentPanel.add(panel);

@@ -1,5 +1,11 @@
 package swingProject.gui.menu;
 
+import swingProject.events.guiEvents.CloseApplicationEvent;
+import swingProject.events.guiEvents.OpenAboutDialogEvent;
+import swingProject.events.guiEvents.SetStartPanelEvent;
+import swingProject.gui.MainFrame;
+import swingProject.utils.handlers.GuiEventHandlers;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +18,13 @@ public class ApplicationMenu extends JMenuBar {
         JMenu jPc = new JMenu("ПК");
         JMenu jList = new JMenu("Комплектующие");
         JMenuItem jExit = new JMenuItem("Выход");
+        jExit.addActionListener(e -> GuiEventHandlers.parseEvent(new CloseApplicationEvent()));
         JMenuItem jRules = new JMenuItem("Руководство пользователя");
         JMenuItem jAboutProgram = new JMenuItem("О программе");
+        jAboutProgram.addActionListener(e -> GuiEventHandlers.parseEvent(new OpenAboutDialogEvent()));
 
         JMenuItem subMenuPc1 = new JMenuItem("Открыть");
+        subMenuPc1.addActionListener(e -> GuiEventHandlers.parseEvent(new SetStartPanelEvent()));
         JMenuItem subMenuPc2 = new JMenuItem("Ранее открытое");
         JMenuItem subMenuPc3 = new JMenuItem("Сохранить");
         JMenuItem subMenuPc4 = new JMenuItem("Сохранить как");
@@ -43,5 +52,9 @@ public class ApplicationMenu extends JMenuBar {
 
         add(jMenuCatalog);
         add(jMenuHelp);
+
+
     }
+
+
 }
