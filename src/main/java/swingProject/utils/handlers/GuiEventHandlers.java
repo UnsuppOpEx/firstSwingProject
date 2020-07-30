@@ -16,15 +16,15 @@ public abstract class GuiEventHandlers {            //TODO Запретить н
     public static void parseEvent(GuiEvent event) {
         if(event != null) {
             if(event instanceof SetStartPanelEvent) {
-                mainFrame.SetStartPanelEvent();
+                mainFrame.setStartPanelEvent();
             }
 
             else if(event instanceof OpenAboutDialogEvent) {
-                mainFrame.OpenAboutDialogEvent();
+                mainFrame.openAboutDialogEvent();
             }
 
             else if(event instanceof CloseApplicationEvent) {
-                mainFrame.CloseApplicationEvent();
+                mainFrame.closeApplicationEvent();
             }
         }
     }

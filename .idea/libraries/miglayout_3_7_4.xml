@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="miglayout-3.7.4">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/miglayout-3.7.4.jar!/" />
+    </CLASSES>
     <JAVADOC />
     <SOURCES />
   </library>
