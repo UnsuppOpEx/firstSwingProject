@@ -1,4 +1,7 @@
 package swingProject.events;
 
-public class SwingProjectEvent {
+/**
+ * Класс маркер
+ */
+public abstract class SwingProjectEvent {
 }

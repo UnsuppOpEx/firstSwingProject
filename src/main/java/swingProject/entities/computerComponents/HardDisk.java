@@ -1,5 +1,7 @@
 package swingProject.entities.computerComponents;
 
+import java.util.Objects;
+
 public class HardDisk extends Component {
     private String capacity;
     private int maxWatt;
@@ -57,17 +59,30 @@ public class HardDisk extends Component {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HardDisk hardDisk = (HardDisk) o;
+        return maxWatt == hardDisk.maxWatt &&
+                minSpeed == hardDisk.minSpeed &&
+                maxSpeed == hardDisk.maxSpeed &&
+                Double.compare(hardDisk.formFactorHdd, formFactorHdd) == 0 &&
+                Objects.equals(capacity, hardDisk.capacity);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(capacity, maxWatt, minSpeed, maxSpeed, formFactorHdd);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "HardDisk{" +
+                "capacity='" + capacity + '\'' +
+                ", maxWatt=" + maxWatt +
+                ", minSpeed=" + minSpeed +
+                ", maxSpeed=" + maxSpeed +
+                ", formFactorHdd=" + formFactorHdd +
+                '}';
     }
 }

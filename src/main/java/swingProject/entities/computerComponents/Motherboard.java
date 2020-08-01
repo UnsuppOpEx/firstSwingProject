@@ -1,6 +1,8 @@
 package swingProject.entities.computerComponents;
 
 
+import java.util.Objects;
+
 public class Motherboard extends Component {
     private String formFactorMB;
     private Socket socket;
@@ -48,17 +50,29 @@ public class Motherboard extends Component {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Motherboard that = (Motherboard) o;
+        return Objects.equals(formFactorMB, that.formFactorMB) &&
+                socket == that.socket &&
+                Objects.equals(chipset, that.chipset) &&
+                Objects.equals(typeSupportRAM, that.typeSupportRAM);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), formFactorMB, socket, chipset, typeSupportRAM);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Motherboard{" +
+                "formFactorMB='" + formFactorMB + '\'' +
+                ", socket=" + socket +
+                ", chipset='" + chipset + '\'' +
+                ", typeSupportRAM='" + typeSupportRAM + '\'' +
+                '}';
     }
 }

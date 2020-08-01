@@ -3,12 +3,9 @@ package swingProject.gui.menu;
 import swingProject.events.guiEvents.CloseApplicationEvent;
 import swingProject.events.guiEvents.OpenAboutDialogEvent;
 import swingProject.events.guiEvents.SetStartPanelEvent;
-import swingProject.gui.MainFrame;
 import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ApplicationMenu extends JMenuBar {
     public ApplicationMenu() {
@@ -39,11 +36,13 @@ public class ApplicationMenu extends JMenuBar {
         jPc.add(subMenuPc2);
         jPc.add(subMenuPc3);
         jPc.add(subMenuPc4);
+
         jList.add(subMenuList1);
         jList.add(subMenuList2);
         jList.add(subMenuList3);
         jList.add(subMenuList4);
         jList.add(subMenuList5);
+
         jMenuCatalog.add(jPc);
         jMenuCatalog.add(jList);
         jMenuCatalog.addSeparator();

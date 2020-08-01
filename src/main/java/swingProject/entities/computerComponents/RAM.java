@@ -1,5 +1,7 @@
 package swingProject.entities.computerComponents;
 
+import java.util.Objects;
+
 public class RAM extends Component {
     private int frequencyRAM;
     private int volume;
@@ -57,17 +59,31 @@ public class RAM extends Component {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        RAM ram = (RAM) o;
+        return frequencyRAM == ram.frequencyRAM &&
+                volume == ram.volume &&
+                radiator == ram.radiator &&
+                Double.compare(ram.voltage, voltage) == 0 &&
+                Objects.equals(formFactorRAM, ram.formFactorRAM);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), frequencyRAM, volume, formFactorRAM, radiator, voltage);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "RAM{" +
+                "frequencyRAM=" + frequencyRAM +
+                ", volume=" + volume +
+                ", formFactorRAM='" + formFactorRAM + '\'' +
+                ", radiator=" + radiator +
+                ", voltage=" + voltage +
+                '}';
     }
 }

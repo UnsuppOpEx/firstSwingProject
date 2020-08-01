@@ -1,5 +1,7 @@
 package swingProject.entities.computerComponents;
 
+import java.util.Objects;
+
 public class PowerSupply extends Component {
     private int nominalWatt;
     private boolean certify80Plus;
@@ -37,17 +39,27 @@ public class PowerSupply extends Component {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PowerSupply that = (PowerSupply) o;
+        return nominalWatt == that.nominalWatt &&
+                certify80Plus == that.certify80Plus &&
+                PFC == that.PFC;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), nominalWatt, certify80Plus, PFC);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "PowerSupply{" +
+                "nominalWatt=" + nominalWatt +
+                ", certify80Plus=" + certify80Plus +
+                ", PFC=" + PFC +
+                '}';
     }
 }

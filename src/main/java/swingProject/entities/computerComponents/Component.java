@@ -1,5 +1,7 @@
 package swingProject.entities.computerComponents;
 
+import java.util.Objects;
+
 public abstract class Component {
     private String manufacturer;
     private String model;
@@ -12,17 +14,26 @@ public abstract class Component {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Component component = (Component) o;
+        return yearRelease == component.yearRelease &&
+                Objects.equals(manufacturer, component.manufacturer) &&
+                Objects.equals(model, component.model);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(manufacturer, model, yearRelease);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Component{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", yearRelease=" + yearRelease +
+                '}';
     }
 }

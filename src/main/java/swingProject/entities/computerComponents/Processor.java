@@ -1,5 +1,7 @@
 package swingProject.entities.computerComponents;
 
+import java.util.Objects;
+
 public class Processor extends Component {
     private int frequencyCPU;
     private int countCore;
@@ -57,17 +59,31 @@ public class Processor extends Component {
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Processor processor = (Processor) o;
+        return frequencyCPU == processor.frequencyCPU &&
+                countCore == processor.countCore &&
+                TDP == processor.TDP &&
+                socket == processor.socket &&
+                Objects.equals(typeSupportRAM, processor.typeSupportRAM);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), frequencyCPU, countCore, TDP, socket, typeSupportRAM);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Processor{" +
+                "frequencyCPU=" + frequencyCPU +
+                ", countCore=" + countCore +
+                ", TDP=" + TDP +
+                ", socket=" + socket +
+                ", typeSupportRAM='" + typeSupportRAM + '\'' +
+                '}';
     }
 }

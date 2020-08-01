@@ -15,11 +15,11 @@ public abstract class GuiEventHandlers {            //TODO Запретить н
     //Обработчик событий
     public static void parseEvent(GuiEvent event) {
         if(event != null) {
-            if(event instanceof SetStartPanelEvent) {
-                mainFrame.setStartPanelEvent();
-            }
+//            if(event instanceof SetStartPanelEvent) {
+//                mainFrame.setStartPanelEvent();
+//            }
 
-            else if(event instanceof OpenAboutDialogEvent) {
+            if(event instanceof OpenAboutDialogEvent) {
                 mainFrame.openAboutDialogEvent();
             }
 

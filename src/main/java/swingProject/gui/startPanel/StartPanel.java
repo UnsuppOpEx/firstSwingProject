@@ -1,20 +1,16 @@
 package swingProject.gui.startPanel;
 
 import net.miginfocom.swing.MigLayout;
-import swingProject.gui.menu.ApplicationMenu;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class StartPanel extends JPanel {
     public StartPanel() {
-        JButton jButton1 = new JButton();
-        JButton jButton2 = new JButton();
-        JButton jButton3 = new JButton();
+        JButton jButton1 = new JButton("Комплектующие");
+        JButton jButton2 = new JButton("ПК");
 
         setLayout(new MigLayout("center"));
-        add(jButton1, "gaptop 150, wrap 20, w 250!, h 50!");
+        add(jButton1, "gaptop 175, wrap 20, w 250!, h 50!");
         add(jButton2, "wrap 20, w 250!, h 50!");
-        add(jButton3, "wrap 20, w 250!, h 50!");
     }
 }

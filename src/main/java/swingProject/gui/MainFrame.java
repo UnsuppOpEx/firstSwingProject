@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
     private JPanel contentPanel;
+    private StartPanel startPanel;
 
     public MainFrame() {
         setTitle("Меню");
@@ -16,9 +17,11 @@ public class MainFrame extends JFrame {
         setLayout(new BorderLayout());
 
         contentPanel = new JPanel();
+        startPanel = new StartPanel();
+
         JLabel label = new JLabel("Версия программы 0.0.1");
 
-        add(contentPanel);
+        add(startPanel);
         add(new ApplicationMenu(),BorderLayout.NORTH);
         add(label,BorderLayout.PAGE_END);           // TODO:перенести label в другой угол.
 
@@ -28,10 +31,10 @@ public class MainFrame extends JFrame {
     }
 
     //Отрисовка панели
-    public void setStartPanelEvent() {
-        setContent(new StartPanel());
-
-    }
+//    public void setStartPanelEvent() {
+//        setContent(new StartPanel());
+//
+//    }
 
     //Открыть окно с информацие о программе
     public void openAboutDialogEvent() {
