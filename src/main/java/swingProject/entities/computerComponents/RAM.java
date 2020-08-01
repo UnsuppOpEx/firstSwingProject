@@ -2,6 +2,10 @@ package swingProject.entities.computerComponents;
 
 import java.util.Objects;
 
+/**
+ * Класс Оперативная память
+ */
+
 public class RAM extends Component {
     private int frequencyRAM;
     private int volume;

@@ -2,6 +2,10 @@ package swingProject.entities.computerComponents;
 
 import java.util.Objects;
 
+/**
+ * Класс Блок питания
+ */
+
 public class PowerSupply extends Component {
     private int nominalWatt;
     private boolean certify80Plus;

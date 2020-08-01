@@ -6,6 +6,10 @@ import swingProject.gui.startPanel.StartPanel;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Основной фрейм
+ */
+
 public class MainFrame extends JFrame {
     private JPanel contentPanel;
     private StartPanel startPanel;
@@ -30,23 +34,32 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
-    //Отрисовка панели
+    /**
+     * Отрисовка панели
+     */
 //    public void setStartPanelEvent() {
 //        setContent(new StartPanel());
 //
 //    }
 
-    //Открыть окно с информацие о программе
+    /**
+     * Открыть окно с информацие о программе
+     */
     public void openAboutDialogEvent() {
         JOptionPane.showMessageDialog(this, "Program for home using", "Message", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    //Выйти из приложения
+    /**
+     * Выйти из приложения
+     */
     public void closeApplicationEvent() {
         System.exit(-1);
     }
 
-    //Отрисовка новой панели
+    /**
+     * Отрисовка новой панели
+     * @param panel
+     */
     public void setContent(JPanel panel) {
         contentPanel.removeAll();
         contentPanel.add(panel);

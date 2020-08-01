@@ -1,5 +1,9 @@
 package swingProject.entities.computerComponents;
 
+/**
+ * Список сокетов для Материнской платы и Процессора
+ */
+
 public enum Socket {
 
     LGA1366(1, "LGA1366"),

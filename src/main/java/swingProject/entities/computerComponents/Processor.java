@@ -2,6 +2,10 @@ package swingProject.entities.computerComponents;
 
 import java.util.Objects;
 
+/**
+ * Класс Процессор
+ */
+
 public class Processor extends Component {
     private int frequencyCPU;
     private int countCore;

@@ -2,6 +2,9 @@ package swingProject.entities.computerComponents;
 
 import java.util.Objects;
 
+/**
+ * Класс Жёсткий диск
+ */
 public class HardDisk extends Component {
     private String capacity;
     private int maxWatt;

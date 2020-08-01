@@ -7,7 +7,12 @@ import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
 
+/**
+ * МенюБар с добавлением слушателей
+ */
+
 public class ApplicationMenu extends JMenuBar {
+
     public ApplicationMenu() {
         JMenu jMenuCatalog = new JMenu("Каталог");
         JMenu jMenuHelp = new JMenu("Помощь");

@@ -3,6 +3,9 @@ package swingProject.entities.computerComponents;
 
 import java.util.Objects;
 
+/**
+ * Класс Материнская плата
+ */
 public class Motherboard extends Component {
     private String formFactorMB;
     private Socket socket;

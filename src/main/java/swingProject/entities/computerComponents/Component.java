@@ -2,6 +2,10 @@ package swingProject.entities.computerComponents;
 
 import java.util.Objects;
 
+/**
+ * Расширяемый класс компонентов
+ */
+
 public abstract class Component {
     private String manufacturer;
     private String model;

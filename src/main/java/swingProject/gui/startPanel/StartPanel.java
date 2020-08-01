@@ -4,7 +4,12 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 
+/**
+ * Стартовая панель
+ */
+
 public class StartPanel extends JPanel {
+
     public StartPanel() {
         JButton jButton1 = new JButton("Комплектующие");
         JButton jButton2 = new JButton("ПК");
