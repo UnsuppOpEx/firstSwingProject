@@ -1,4 +1,4 @@
 package swingProject.events.guiEvents;
 
-public class ComponentActionEvent {
+public final class ComponentActionEvent extends GuiEvent {
 }

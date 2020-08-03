@@ -1,5 +1,8 @@
 package swingProject.gui;
 
+import swingProject.componentView.componentsMenu.ComponentsMenu;
+import swingProject.componentView.powerSupplyView.PowerSupplyView;
+import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.gui.menu.ApplicationMenu;
 import swingProject.gui.startPanel.StartPanel;
 
@@ -13,6 +16,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     private JPanel contentPanel;
     private StartPanel startPanel;
+    private ComponentsMenu componentsMenu;
 
     public MainFrame() {
         setTitle("Меню");
@@ -22,10 +26,12 @@ public class MainFrame extends JFrame {
 
         contentPanel = new JPanel();
         startPanel = new StartPanel();
+        componentsMenu = new ComponentsMenu();
+        contentPanel = startPanel;
 
         JLabel label = new JLabel("Версия программы 0.0.1");
 
-        add(startPanel);
+        add(contentPanel);
         add(new ApplicationMenu(),BorderLayout.NORTH);
         add(label,BorderLayout.PAGE_END);           // TODO:перенести label в другой угол.
 
@@ -37,10 +43,10 @@ public class MainFrame extends JFrame {
     /**
      * Отрисовка панели
      */
-//    public void setStartPanelEvent() {
-//        setContent(new StartPanel());
-//
-//    }
+    public void setStartPanelEvent() {
+        setContent(startPanel);
+
+    }
 
     /**
      * Открыть окно с информацие о программе
@@ -54,6 +60,14 @@ public class MainFrame extends JFrame {
      */
     public void closeApplicationEvent() {
         System.exit(-1);
+    }
+
+
+    /**
+     * Отрисовка панели с комплектующими
+     */
+    public void setComponentsChoiceEvent() {
+        setContent(componentsMenu);
     }
 
     /**
