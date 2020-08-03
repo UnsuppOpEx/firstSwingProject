@@ -35,4 +35,32 @@ public enum Socket {
     public String getStr() {
         return str;
     }
-}
+
+    /**
+     * Возвращает стороковое представление Socket из массива
+     * @param str
+     * @return
+     */
+    public static Socket getSocketName(String str) {
+        for (Socket socket : Socket.values()) {
+            if (socket.getStr().equals(str))
+                return socket;
+        }
+             throw new AssertionError();
+    }
+
+    /**
+     * Возвращает идентификатор Socket
+     * @param id
+     * @return
+     */
+        public static Socket getSocketId(int id){
+            for (Socket socket : Socket.values()) {
+                if (socket.getId() == id)
+                    return socket;
+            }
+
+             throw new AssertionError();
+
+        }
+    }
