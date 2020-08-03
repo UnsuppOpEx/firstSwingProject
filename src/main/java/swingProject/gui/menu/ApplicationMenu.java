@@ -10,7 +10,6 @@ import javax.swing.*;
 /**
  * МенюБар с добавлением слушателей
  */
-
 public class ApplicationMenu extends JMenuBar {
 
     public ApplicationMenu() {

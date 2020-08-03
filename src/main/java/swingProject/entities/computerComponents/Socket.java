@@ -54,13 +54,11 @@ public enum Socket {
      * @param id
      * @return
      */
-        public static Socket getSocketId(int id){
-            for (Socket socket : Socket.values()) {
-                if (socket.getId() == id)
-                    return socket;
-            }
-
-             throw new AssertionError("Socket не найден");
-
+    public static Socket getSocketId(int id) {
+        for (Socket socket : Socket.values()) {
+            if (socket.getId() == id)
+                return socket;
         }
+             throw new AssertionError("Socket не найден");
     }
+}
