@@ -46,7 +46,7 @@ public enum Socket {
             if (socket.getStr().equals(str))
                 return socket;
         }
-             throw new AssertionError();
+             throw new AssertionError("Socket не найден");
     }
 
     /**
@@ -60,7 +60,7 @@ public enum Socket {
                     return socket;
             }
 
-             throw new AssertionError();
+             throw new AssertionError("Socket не найден");
 
         }
     }
