@@ -2,7 +2,7 @@ package swingProject.gui;
 
 import swingProject.componentView.componentsMenu.ComponentsMenu;
 import swingProject.componentView.powerSupplyView.PowerSupplyView;
-import swingProject.entities.computerComponents.PowerSupply;
+import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableModel;
 import swingProject.gui.menu.ApplicationMenu;
 import swingProject.gui.startPanel.StartPanel;
 
@@ -12,24 +12,27 @@ import java.awt.*;
 /**
  * Основной фрейм
  */
-
 public class MainFrame extends JFrame {
     private JPanel contentPanel;
     private StartPanel startPanel;
     private ComponentsMenu componentsMenu;
+    private PowerSupplyView powerSupplyView;
+    private PowerSupplyTableModel powerSupplyTableModel;
 
     public MainFrame() {
         setTitle("Меню");
         setSize(new Dimension(800,600));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
 
         contentPanel = new JPanel();
         startPanel = new StartPanel();
         componentsMenu = new ComponentsMenu();
-        contentPanel = startPanel;
+        powerSupplyView = new PowerSupplyView();
+        powerSupplyTableModel = new PowerSupplyTableModel();
 
         JLabel label = new JLabel("Версия программы 0.0.1");
+
+        setContent(startPanel);
 
         add(contentPanel);
         add(new ApplicationMenu(),BorderLayout.NORTH);
@@ -45,11 +48,10 @@ public class MainFrame extends JFrame {
      */
     public void setStartPanelEvent() {
         setContent(startPanel);
-
     }
 
     /**
-     * Открыть окно с информацие о программе
+     * Открыть окно с информацией о программе
      */
     public void openAboutDialogEvent() {
         JOptionPane.showMessageDialog(this, "Program for home using", "Message", JOptionPane.INFORMATION_MESSAGE);
@@ -69,6 +71,17 @@ public class MainFrame extends JFrame {
     public void setComponentsChoiceEvent() {
         setContent(componentsMenu);
     }
+
+    /**
+     * Отрисовка панели с Блоками питания
+     */
+    public void componentActionEvent() {
+        setContent(powerSupplyView);
+    }
+
+//    public void powerSupplyEventAdd() {
+//        powerSupplyTableModel.addData();
+//    }
 
     /**
      * Отрисовка новой панели

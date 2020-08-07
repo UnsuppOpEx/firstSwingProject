@@ -5,7 +5,6 @@ import java.util.Objects;
 /**
  * Расширяемый класс компонентов
  */
-
 public abstract class Component {
     private String manufacturer;
     private String model;
@@ -14,6 +13,30 @@ public abstract class Component {
     public Component(String manufacturer, String model, int yearRelease) {
         this.manufacturer = manufacturer;
         this.model = model;
+        this.yearRelease = yearRelease;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYearRelease() {
+        return yearRelease;
+    }
+
+    public void setYearRelease(int yearRelease) {
         this.yearRelease = yearRelease;
     }
 

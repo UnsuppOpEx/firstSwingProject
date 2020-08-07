@@ -1,26 +1,31 @@
 package swingProject.componentView.powerSupplyView.tableModel;
 
-import swingProject.entities.computerComponents.Component;
+import swingProject.entities.computerComponents.PowerSupply;
 
-import javax.swing.*;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.util.ArrayList;
 
+/**
+ * Модель таблицы для Блоков питания
+ */
 public class PowerSupplyTableModel implements TableModel {
 
-    private ArrayList<Component> list;
+    private ArrayList<PowerSupply> list;
+
 
     public PowerSupplyTableModel() {
-//        this.list = list;
+        list = new ArrayList<>();
+        for (int i = 0; i < 40; i++) {
+            list.add(new PowerSupply("Chiftec", "Chiftec650", 2012, 650, true, false));
+        }
     }
 
-    public void addData(Component component) {
+    public void addData(PowerSupply component) {
         list.add(component);
     }
 
-    public void removeData(Component component) {
+    public void removeData(PowerSupply component) {
         list.remove(component);
     }
 
@@ -31,17 +36,26 @@ public class PowerSupplyTableModel implements TableModel {
 
     @Override
     public int getColumnCount() {
-        return 0;
+        return 6;
     }
 
     @Override
     public String getColumnName(int columnIndex) {
+
+        switch (columnIndex) {
+            case 0: return "Бренд";
+            case 1: return "Модель";
+            case 2: return "Год релиза";
+            case 3: return "Мощность";
+            case 4: return "КПД 80+";
+            case 5: return "PFC";
+        }
         return null;
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        return null;
+        return String.class;
     }
 
     @Override
@@ -51,6 +65,17 @@ public class PowerSupplyTableModel implements TableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+
+        PowerSupply component = list.get(rowIndex);
+
+        switch (columnIndex) {
+            case 0: return component.getManufacturer();
+            case 1: return component.getModel();
+            case 2: return component.getYearRelease();
+            case 3: return component.getNominalWatt();
+            case 4: return component.isCertify80Plus();
+            case 5: return component.isPFC();
+        }
         return null;
     }
 

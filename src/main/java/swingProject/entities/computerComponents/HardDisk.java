@@ -6,51 +6,51 @@ import java.util.Objects;
  * Класс Жёсткий диск
  */
 public class HardDisk extends Component {
-    private String capacity;
-    private int maxWatt;
-    private int minSpeed;
-    private int maxSpeed;
+    private int capacity;
+    private int cash;
+    private int spinInMin;
+    private int maxSpeedRead;
     private double formFactorHdd;
 
-    public HardDisk(String manufacture, String model, int yearRelease, String capacity, int maxWatt, int minSpeed, int maxSpeed, double formFactorHdd) {
+    public HardDisk(String manufacture, String model, int yearRelease, int capacity, int cash, int spinInMin, int maxSpeedRead, double formFactorHdd) {
         super(manufacture, model, yearRelease);
         this.capacity = capacity;
         this.formFactorHdd = formFactorHdd;
-        this.maxSpeed = maxSpeed;
-        this.minSpeed = minSpeed;
-        this.maxWatt = maxWatt;
+        this.maxSpeedRead = maxSpeedRead;
+        this.spinInMin = spinInMin;
+        this.cash = cash;
     }
 
-    public String getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
 
-    public int getMaxWatt() {
-        return maxWatt;
+    public int getCash() {
+        return cash;
     }
 
-    public void setMaxWatt(int maxWatt) {
-        this.maxWatt = maxWatt;
+    public void setCash(int cash) {
+        this.cash = cash;
     }
 
-    public int getMinSpeed() {
-        return minSpeed;
+    public int getSpinInMin() {
+        return spinInMin;
     }
 
-    public void setMinSpeed(int minSpeed) {
-        this.minSpeed = minSpeed;
+    public void setSpinInMin(int spinInMin) {
+        this.spinInMin = spinInMin;
     }
 
-    public int getMaxSpeed() {
-        return maxSpeed;
+    public int getMaxSpeedRead() {
+        return maxSpeedRead;
     }
 
-    public void setMaxSpeed(int maxSpeed) {
-        this.maxSpeed = maxSpeed;
+    public void setMaxSpeedRead(int maxSpeedRead) {
+        this.maxSpeedRead = maxSpeedRead;
     }
 
     public double getFormFactorHdd() {
@@ -66,25 +66,25 @@ public class HardDisk extends Component {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HardDisk hardDisk = (HardDisk) o;
-        return maxWatt == hardDisk.maxWatt &&
-                minSpeed == hardDisk.minSpeed &&
-                maxSpeed == hardDisk.maxSpeed &&
+        return cash == hardDisk.cash &&
+                spinInMin == hardDisk.spinInMin &&
+                maxSpeedRead == hardDisk.maxSpeedRead &&
                 Double.compare(hardDisk.formFactorHdd, formFactorHdd) == 0 &&
                 Objects.equals(capacity, hardDisk.capacity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(capacity, maxWatt, minSpeed, maxSpeed, formFactorHdd);
+        return Objects.hash(capacity, cash, spinInMin, maxSpeedRead, formFactorHdd);
     }
 
     @Override
     public String toString() {
         return "HardDisk{" +
                 "capacity='" + capacity + '\'' +
-                ", maxWatt=" + maxWatt +
-                ", minSpeed=" + minSpeed +
-                ", maxSpeed=" + maxSpeed +
+                ", maxWatt=" + cash +
+                ", minSpeed=" + spinInMin +
+                ", maxSpeed=" + maxSpeedRead +
                 ", formFactorHdd=" + formFactorHdd +
                 '}';
     }

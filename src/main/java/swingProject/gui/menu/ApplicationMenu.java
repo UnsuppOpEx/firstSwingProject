@@ -25,7 +25,6 @@ public class ApplicationMenu extends JMenuBar {
         jAboutProgram.addActionListener(e -> GuiEventHandlers.parseEvent(new OpenAboutDialogEvent()));
 
         JMenuItem subMenuPc1 = new JMenuItem("Открыть");
-        subMenuPc1.addActionListener(e -> GuiEventHandlers.parseEvent(new SetStartPanelEvent()));
         JMenuItem subMenuPc2 = new JMenuItem("Ранее открытое");
         JMenuItem subMenuPc3 = new JMenuItem("Сохранить");
         JMenuItem subMenuPc4 = new JMenuItem("Сохранить как");
@@ -56,8 +55,6 @@ public class ApplicationMenu extends JMenuBar {
 
         add(jMenuCatalog);
         add(jMenuHelp);
-
-
     }
 
 

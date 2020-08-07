@@ -1,7 +1,7 @@
 package swingProject.events.guiEvents;
 
 /**
- * Установка панели
+ * Установка стартовой панели
  */
 public final class SetStartPanelEvent extends GuiEvent {
 }

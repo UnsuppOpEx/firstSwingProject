@@ -8,6 +8,9 @@ import swingProject.utils.handlers.GuiEventHandlers;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Меню компонентов
+ */
 public class ComponentsMenu extends JPanel {
 
     public ComponentsMenu() {
@@ -30,15 +33,5 @@ public class ComponentsMenu extends JPanel {
         add(jButton5, "wrap 20, w 250!, h 50!");
         add(jButton6, "wrap 20, w 250!, h 50!");
     }
-
-//    public static void main(String[] args) {
-//        JFrame jFrame = new JFrame();
-//        jFrame.setSize(new Dimension(800, 600));
-//        jFrame.setResizable(false);
-//        jFrame.setLocationRelativeTo(null);
-//        jFrame.add(new ComponentsMenu());
-//        jFrame.setVisible(true);
-//
-//    }
 }
 
