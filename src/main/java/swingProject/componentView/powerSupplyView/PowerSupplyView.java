@@ -53,7 +53,7 @@ public class PowerSupplyView extends JPanel {
         jButton4.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PowerSupplyDialog(null, "Заголовок", true);
+                new PowerSupplyDialog(GuiEventHandlers.getMainFrame(), "Добавление компонентов", true);
             }
         });
 

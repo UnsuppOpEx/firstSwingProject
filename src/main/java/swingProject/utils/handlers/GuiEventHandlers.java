@@ -14,6 +14,10 @@ public abstract class GuiEventHandlers {
         GuiEventHandlers.mainFrame = mainFrame;
     }
 
+    public static MainFrame getMainFrame() {
+        return mainFrame;
+    }
+
     /**
      * Обработка входящих событий
      * @param event
