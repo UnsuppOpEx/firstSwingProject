@@ -15,5 +15,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="miglayout-core-5.2" level="project" />
     <orderEntry type="library" name="miglayout-3.7.4" level="project" />
+    <orderEntry type="library" name="miglayout-3.7.41" level="project" />
   </component>
 </module>

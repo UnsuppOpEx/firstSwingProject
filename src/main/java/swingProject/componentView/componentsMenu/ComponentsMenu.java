@@ -6,12 +6,12 @@ import swingProject.events.guiEvents.SetStartPanelEvent;
 import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Меню компонентов
  */
 public class ComponentsMenu extends JPanel {
+    private static final String BUTTON_SIZE = "wrap 20, w 250!, h 50!";
 
     public ComponentsMenu() {
 
@@ -19,19 +19,21 @@ public class ComponentsMenu extends JPanel {
         JButton jButton2 = new JButton("Материнская плата");
         JButton jButton3 = new JButton("Оперативная память");
         JButton jButton4 = new JButton("Жёсткий диск");
+
         JButton jButton5 = new JButton("Блок питания");
         jButton5.addActionListener(e -> GuiEventHandlers.parseEvent(new ComponentActionEvent()));
+
         JButton jButton6 = new JButton("Назад");
         jButton6.addActionListener(e -> GuiEventHandlers.parseEvent(new SetStartPanelEvent()));
 
 
         setLayout(new MigLayout("center"));
-        add(jButton1, "gaptop 50, wrap 20, w 250!, h 50!");
-        add(jButton2, "wrap 20, w 250!, h 50!");
-        add(jButton3, "wrap 20, w 250!, h 50!");
-        add(jButton4, "wrap 20, w 250!, h 50!");
-        add(jButton5, "wrap 20, w 250!, h 50!");
-        add(jButton6, "wrap 20, w 250!, h 50!");
+        add(jButton1, "gaptop 50, " + BUTTON_SIZE);
+        add(jButton2, BUTTON_SIZE );
+        add(jButton3, BUTTON_SIZE);
+        add(jButton4, BUTTON_SIZE);
+        add(jButton5, BUTTON_SIZE);
+        add(jButton6, BUTTON_SIZE);
     }
 }
 

@@ -1,6 +1,7 @@
 package swingProject.gui;
 
 import swingProject.componentView.componentsMenu.ComponentsMenu;
+import swingProject.componentView.powerSupplyView.PowerSupplyDialog;
 import swingProject.componentView.powerSupplyView.PowerSupplyView;
 import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableModel;
 import swingProject.gui.menu.ApplicationMenu;
@@ -79,9 +80,27 @@ public class MainFrame extends JFrame {
         setContent(powerSupplyView);
     }
 
-//    public void powerSupplyEventAdd() {
-//        powerSupplyTableModel.addData();
-//    }
+    /**
+     * Открыть диалоговое окно Блоков питания
+     */
+    public void openPowerSupplyDialog() {
+        new PowerSupplyDialog(this,"", true);
+    }
+
+    public void powerSupplyEventRemove() {
+       int i = powerSupplyView.getjTable().getSelectedRow();
+       powerSupplyTableModel.removeData(i);
+       powerSupplyView.getjTable().revalidate();
+       powerSupplyView.getjTable().repaint();
+        System.out.println(powerSupplyTableModel.getRowCount());
+    }
+
+    public void getSelectedComponent() {
+    }
+
+    public void powerSupplyEventAdd() {
+
+    }
 
     /**
      * Отрисовка новой панели

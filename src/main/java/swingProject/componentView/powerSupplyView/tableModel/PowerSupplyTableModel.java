@@ -17,7 +17,7 @@ public class PowerSupplyTableModel implements TableModel {
     public PowerSupplyTableModel() {
         list = new ArrayList<>();
         for (int i = 0; i < 40; i++) {
-            list.add(new PowerSupply("Chiftec", "Chiftec650", 2012, 650, true, false));
+            list.add(new PowerSupply("Chiftec"+ i, "Chiftec650", 2012, 650, true, false));
         }
     }
 
@@ -25,8 +25,8 @@ public class PowerSupplyTableModel implements TableModel {
         list.add(component);
     }
 
-    public void removeData(PowerSupply component) {
-        list.remove(component);
+    public void removeData(int i) {
+        list.remove(i);
     }
 
     @Override
