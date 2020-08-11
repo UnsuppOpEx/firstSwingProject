@@ -1,6 +1,8 @@
 package swingProject.utils.handlers;
 
 import swingProject.events.guiEvents.*;
+import swingProject.events.powerSupplyEvent.PowerSupplyEventAdd;
+import swingProject.events.powerSupplyEvent.PowerSupplyEventEdit;
 import swingProject.events.powerSupplyEvent.PowerSupplyEventRemove;
 import swingProject.gui.MainFrame;
 
@@ -44,8 +46,8 @@ public abstract class GuiEventHandlers {
                 mainFrame.componentActionEvent();
             }
 
-            else if(event instanceof OpenPowerSupplyDialog) {
-                mainFrame.openPowerSupplyDialog();
+            else if(event instanceof PowerSupplyEventAdd) {
+                mainFrame.powerSupplyEventAdd();
             }
 
             else if(event instanceof PowerSupplyEventRemove) {
@@ -56,9 +58,9 @@ public abstract class GuiEventHandlers {
                 mainFrame.getSelectedComponent();
             }
 
-//            else if(event instanceof powerSupplyEventAdd) {
-//                mainFrame.powerSupplyEventAdd();
-//            }
+            else if(event instanceof PowerSupplyEventEdit) {
+                mainFrame.powerSupplyEventEdit();
+            }
 
         }
     }

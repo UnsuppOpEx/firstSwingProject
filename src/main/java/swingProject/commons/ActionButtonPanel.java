@@ -1,7 +1,8 @@
 package swingProject.commons;
 
-import swingProject.events.guiEvents.OpenPowerSupplyDialog;
 import swingProject.events.guiEvents.SetComponentsChoiceEvent;
+import swingProject.events.powerSupplyEvent.PowerSupplyEventAdd;
+import swingProject.events.powerSupplyEvent.PowerSupplyEventEdit;
 import swingProject.events.powerSupplyEvent.PowerSupplyEventRemove;
 import swingProject.utils.handlers.GuiEventHandlers;
 
@@ -23,10 +24,12 @@ public class ActionButtonPanel extends JPanel {
 
         JButton jButton2 = new JButton("Удалить");
         jButton2.addActionListener(e -> GuiEventHandlers.parseEvent(new PowerSupplyEventRemove()));
+
         JButton jButton3 = new JButton("Ред-ть");
+        jButton3.addActionListener(e -> GuiEventHandlers.parseEvent(new PowerSupplyEventEdit()));
 
         JButton jButton4 = new JButton("Добавить");
-        jButton4.addActionListener(e -> GuiEventHandlers.parseEvent(new OpenPowerSupplyDialog()));
+        jButton4.addActionListener(e -> GuiEventHandlers.parseEvent(new PowerSupplyEventAdd()));
 
         add(jButton1);
         add(jButton2);

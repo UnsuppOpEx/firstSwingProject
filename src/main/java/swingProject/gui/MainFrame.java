@@ -80,26 +80,34 @@ public class MainFrame extends JFrame {
         setContent(powerSupplyView);
     }
 
-    /**
-     * Открыть диалоговое окно Блоков питания
-     */
-    public void openPowerSupplyDialog() {
-        new PowerSupplyDialog(this,"", true);
-    }
 
     public void powerSupplyEventRemove() {
        int i = powerSupplyView.getjTable().getSelectedRow();
-       powerSupplyTableModel.removeData(i);
-       powerSupplyView.getjTable().revalidate();
-       powerSupplyView.getjTable().repaint();
-        System.out.println(powerSupplyTableModel.getRowCount());
+        try {
+            powerSupplyTableModel.removeData(i);
+            powerSupplyView.getjTable().revalidate();
+            powerSupplyView.getjTable().repaint();
+            System.out.println(powerSupplyTableModel.getRowCount());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Не возможно удалить компонент, возможно он уже удалён или не выбран.", "Message", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public void getSelectedComponent() {
     }
 
+    /**
+     * Добавить блок питания
+     */
     public void powerSupplyEventAdd() {
+        new PowerSupplyDialog(this,"", true);
+    }
 
+    /**
+     * Внести изменения в существующий блок питания
+     */
+    public void powerSupplyEventEdit() {
+        new PowerSupplyDialog(this, "", true);
     }
 
     /**
