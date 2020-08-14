@@ -1,0 +1,9 @@
+{
+   "arraylist": [
+            {"manufacturer": "Chiftec1",  "model": "Chiftec750",  "yearRelease": 2012,  "nominalWatt": 750, "certify80Plus": true, "PFC": false] },
+            {"manufacturer": "Chiftec2",  "model": "Chiftec650",  "yearRelease": 2012,  "nominalWatt": 650, "certify80Plus": true, "PFC": false] },
+            {"manufacturer": "Chiftec3",  "model": "Chiftec550",  "yearRelease": 2012,  "nominalWatt": 550, "certify80Plus": true, "PFC": false] },
+            {"manufacturer": "Chiftec4",  "model": "Chiftec450",  "yearRelease": 2012,  "nominalWatt": 450, "certify80Plus": true, "PFC": false] },
+            {"manufacturer": "Chiftec5",  "model": "Chiftec850",  "yearRelease": 2012,  "nominalWatt": 850, "certify80Plus": true, "PFC": false] }
+                ]
+}
