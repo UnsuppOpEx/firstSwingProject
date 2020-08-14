@@ -2,6 +2,9 @@ package swingProject.componentView.powerSupplyView;
 
 import swingProject.commons.ActionButtonPanel;
 import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableModel;
+import swingProject.events.guiEvents.SetComponentsChoiceEvent;
+import swingProject.events.powerSupplyEvent.PowerSupplyRemoveEvent;
+import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,6 +30,27 @@ public class PowerSupplyView extends JPanel {
         powerSupplyTableModel = new PowerSupplyTableModel();
         actionButtonPanel = new ActionButtonPanel();
 
+        actionButtonPanel.addActionListenerForBackButton(
+                actionEvent -> GuiEventHandlers.parseEvent(new SetComponentsChoiceEvent())
+        );
+
+        actionButtonPanel.addActionListenerForRemoveButton(
+                actionEvent -> GuiEventHandlers.parseEvent(
+                        new PowerSupplyRemoveEvent(
+                                jTable.getSelectedRow()
+                        )
+                )
+        );
+
+        actionButtonPanel.addActionListenerForEditButton(
+                actionEvent -> {
+                    PowerSupplyDialog dialog = new PowerSupplyDialog(
+                            null, "Редактирование элемента", true
+
+                    );
+                }
+        );
+
         jTable = new JTable(powerSupplyTableModel);
 
         JScrollPane jScrollPane = new JScrollPane(jTable);
@@ -42,6 +66,13 @@ public class PowerSupplyView extends JPanel {
         add(jScrollPane, BorderLayout.CENTER);
         add(actionButtonPanel, BorderLayout.PAGE_END);
 
+    }
+
+    public void removePowerSupply(int index) {
+        powerSupplyTableModel.removeData(index);
+        jTable.clearSelection();
+        jTable.repaint();
+        jTable.revalidate();
     }
 
 }

@@ -18,7 +18,6 @@ public class MainFrame extends JFrame {
     private StartPanel startPanel;
     private ComponentsMenu componentsMenu;
     private PowerSupplyView powerSupplyView;
-    private PowerSupplyTableModel powerSupplyTableModel;
 
     public MainFrame() {
         setTitle("Меню");
@@ -29,7 +28,6 @@ public class MainFrame extends JFrame {
         startPanel = new StartPanel();
         componentsMenu = new ComponentsMenu();
         powerSupplyView = new PowerSupplyView();
-        powerSupplyTableModel = new PowerSupplyTableModel();
 
         JLabel label = new JLabel("Версия программы 0.0.1");
 
@@ -81,15 +79,17 @@ public class MainFrame extends JFrame {
     }
 
 
-    public void powerSupplyEventRemove() {
-       int i = powerSupplyView.getjTable().getSelectedRow();
+    public void powerSupplyEventRemove(int index) {
+
         try {
-            powerSupplyTableModel.removeData(i);
-            powerSupplyView.getjTable().revalidate();
-            powerSupplyView.getjTable().repaint();
-            System.out.println(powerSupplyTableModel.getRowCount());
+            powerSupplyView.removePowerSupply(index);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Не возможно удалить компонент, возможно он уже удалён или не выбран.", "Message", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Не возможно удалить компонент, возможно он уже удалён или не выбран.",
+                    "Message",
+                    JOptionPane.ERROR_MESSAGE
+            );
         }
     }
 
