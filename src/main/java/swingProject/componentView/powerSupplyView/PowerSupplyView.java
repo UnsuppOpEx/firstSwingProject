@@ -45,7 +45,7 @@ public class PowerSupplyView extends JPanel {
                         )
                 )
         );
-
+        //
         actionButtonPanel.addActionListenerForEditButton(
                 actionEvent -> {
                     dialog = new PowerSupplyDialog(
@@ -77,6 +77,10 @@ public class PowerSupplyView extends JPanel {
 
     }
 
+    /**
+     * Удаляет выбранный элемент из таблицы
+     * @param index
+     */
     public void removePowerSupply(int index) {
         powerSupplyTableModel.removeData(index);
         jTable.clearSelection();
@@ -84,21 +88,41 @@ public class PowerSupplyView extends JPanel {
         jTable.revalidate();
     }
 
+    /**
+     * Создает новый объект PowerSupply и добавляет в таблицу
+     */
     public void addNewComponentToTable() {
 
-//          String model = dialog.getjTextField2().getText();
 //        int year = Integer.valueOf(String.valueOf(dialog.getjTextField3().getText()));
 //        int watt = Integer.valueOf(String.valueOf(dialog.getjTextField4().getText()));
 //        boolean KPD80 = dialog.getRadioButton().isSelected() ? true : false;
 //        boolean PFC = dialog.getRadioButton2().isSelected() ? true : false;
 
-        powerSupplyTableModel.addData(new PowerSupply("WD", "WD1000",
-                2020, 1000, true, true));
+        try {
+            powerSupplyTableModel.addData(new PowerSupply(dialog.getBrand(), "WD1000",
+                    2020, 1000, true, true));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Не удалось добавить компонент",
+                    "Message", JOptionPane.ERROR_MESSAGE
+                    );
+        }
+             JOptionPane.showMessageDialog(
+                    this,
+                    "Компонент добавлен",
+                    "Message", JOptionPane.INFORMATION_MESSAGE
+                    );
+
     }
 
+    /**
+     * Создаёт новое диалоговое окно
+      */
     public void createPowerSupplyDialog() {
-          dialog = new PowerSupplyDialog(null,"",true);
+            dialog = new PowerSupplyDialog(null,"",true);
+
+        }
 
     }
 
-}

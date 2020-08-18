@@ -1,6 +1,7 @@
 package swingProject.gui;
 
 import swingProject.componentView.componentsMenu.ComponentsMenu;
+import swingProject.componentView.powerSupplyView.PowerSupplyDialog;
 import swingProject.componentView.powerSupplyView.PowerSupplyView;
 import swingProject.gui.menu.ApplicationMenu;
 import swingProject.gui.startPanel.StartPanel;

@@ -6,6 +6,8 @@ import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Диалоговое окно для редактирования Блоков питания
@@ -22,6 +24,7 @@ public class PowerSupplyDialog extends JDialog {
     private JRadioButton radioButton1;
     private JRadioButton radioButton2;
     private JRadioButton radioButton3;
+    public String line = "Samsung";
 
     private ButtonGroup group;
     private ButtonGroup group1;
@@ -64,6 +67,12 @@ public class PowerSupplyDialog extends JDialog {
         jLabel.setBounds(20, 55, 260, 20);
         jTextField = new JTextField();
         jTextField.setBounds(120, 55, 150, 20);
+        jTextField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                brand = jTextField.getText();
+            }
+        });
 
         JLabel jLabe2 = new JLabel("Модель");
         jLabe2.setBounds(20, 95, 260, 20);
