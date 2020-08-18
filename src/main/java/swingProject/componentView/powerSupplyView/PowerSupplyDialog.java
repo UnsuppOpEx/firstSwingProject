@@ -1,51 +1,89 @@
 package swingProject.componentView.powerSupplyView;
 
+import swingProject.commons.ComponentDialog;
+import swingProject.events.guiEvents.CreateNewComponentEvent;
+import swingProject.utils.handlers.GuiEventHandlers;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Диалоговое окно для редактирования Блоков питания
  */
 public class PowerSupplyDialog extends JDialog {
+    private ComponentDialog componentDialog;
+    private JPanel jPanel;
+    private String brand;
+    private JTextField jTextField;
+    private JTextField jTextField2;
+    private JTextField jTextField3;
+    private JTextField jTextField4;
+    private JRadioButton radioButton;
+    private JRadioButton radioButton1;
+    private JRadioButton radioButton2;
+    private JRadioButton radioButton3;
+
+    private ButtonGroup group;
+    private ButtonGroup group1;
+
+    public String getBrand() {
+        return brand;
+    }
 
     public PowerSupplyDialog(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
 
-        JPanel jPanel = new JPanel();
-        jPanel.setLayout(null);
+        componentDialog = new ComponentDialog();
+        jPanel = new JPanel();
+        group = new ButtonGroup();
+        group1 = new ButtonGroup();
 
-        ButtonGroup group = new ButtonGroup();
-        ButtonGroup group1 = new ButtonGroup();
+        /**
+         * Закрыть диалоговое окно
+         */
+        componentDialog.addActionListenerForButtonNo(
+                actionEvent -> {
+                    setVisible(false);
+                    dispose();
+                }
+        );
+
+        /**
+         *  Создание и добавление нового элемента PowerSupply в таблицу
+         */
+        componentDialog.addActionListenerForButtonOk(
+                e -> GuiEventHandlers.parseEvent(new CreateNewComponentEvent())
+        );
+
+        jPanel.setLayout(null);
 
         JLabel jLabel0 = new JLabel("Блок питания");
         jLabel0.setBounds(100, 5, 260, 20);
 
         JLabel jLabel = new JLabel("Бренд");
         jLabel.setBounds(20, 55, 260, 20);
-        JTextField jTextField = new JTextField();
+        jTextField = new JTextField();
         jTextField.setBounds(120, 55, 150, 20);
 
         JLabel jLabe2 = new JLabel("Модель");
         jLabe2.setBounds(20, 95, 260, 20);
-        JTextField jTextField2 = new JTextField();
+        jTextField2 = new JTextField();
         jTextField2.setBounds(120, 95, 150, 20);
 
         JLabel jLabe3 = new JLabel("Год производства");
         jLabe3.setBounds(20, 135, 260, 20);
-        JTextField jTextField3 = new JTextField();
+        jTextField3 = new JTextField();
         jTextField3.setBounds(120, 135, 150, 20);
 
         JLabel jLabe4 = new JLabel("Мощность");
         jLabe4.setBounds(20, 175, 260, 20);
-        JTextField jTextField4 = new JTextField();
+        jTextField4 = new JTextField();
         jTextField4.setBounds(120, 175, 150, 20);
 
         JLabel jLabe5 = new JLabel("КПД 80+");
         jLabe5.setBounds(20, 215, 260, 20);
-        JRadioButton radioButton = new JRadioButton("Да", false);
-        JRadioButton radioButton1 = new JRadioButton("Нет", true);
+        radioButton = new JRadioButton("Да", false);
+        radioButton1 = new JRadioButton("Нет", true);
 
 
                 group.add(radioButton);
@@ -55,9 +93,8 @@ public class PowerSupplyDialog extends JDialog {
 
                 JLabel jLabe6 = new JLabel("PFC");
                 jLabe6.setBounds(20, 255, 260, 20);
-                JRadioButton radioButton2 = new JRadioButton("Да", false);
-
-                JRadioButton radioButton3 = new JRadioButton("Нет", true);
+                radioButton2 = new JRadioButton("Да", false);
+                radioButton3 = new JRadioButton("Нет", true);
 
                 group1.add(radioButton2);
                 group1.add(radioButton3);
@@ -83,45 +120,43 @@ public class PowerSupplyDialog extends JDialog {
                 jPanel.add(jLabe6);
 
                 add(jPanel);
-                add(createPanel(), BorderLayout.SOUTH);
+                add(componentDialog, BorderLayout.SOUTH);
 
                 setResizable(false);
                 setSize(new Dimension(300, 400));
                 setVisible(true);
             }
 
-            /**
-             * Панель с кнопками управления для Диалогового окна
-             *
-             * @return
-             */
-            public JPanel createPanel() {
-
-                JPanel panel = new JPanel();
-
-                panel.setLayout(new FlowLayout());
-
-                JButton jButton = new JButton("Отмена");
-                jButton.addActionListener(new AbstractAction() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        setVisible(false);
-                        dispose();
-                    }
-                });
-
-                JButton jButton1 = new JButton("Ок");
-
-                panel.add(jButton);
-                panel.add(jButton1);
-
-                return panel;
-            }
 
             public static void main(String[] args) {
                 new PowerSupplyDialog(null, "", true);
 
             }
-        }
+
+    public JTextField getjTextField() {
+        return jTextField;
+    }
+
+    public JTextField getjTextField2() {
+        return jTextField2;
+    }
+
+    public JTextField getjTextField3() {
+        return jTextField3;
+    }
+
+    public JTextField getjTextField4() {
+        return jTextField4;
+    }
+
+    public JRadioButton getRadioButton() {
+        return radioButton;
+    }
+
+    public JRadioButton getRadioButton2() {
+        return radioButton2;
+    }
+
+}
 
 

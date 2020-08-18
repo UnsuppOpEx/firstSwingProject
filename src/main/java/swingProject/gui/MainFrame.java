@@ -1,9 +1,7 @@
 package swingProject.gui;
 
 import swingProject.componentView.componentsMenu.ComponentsMenu;
-import swingProject.componentView.powerSupplyView.PowerSupplyDialog;
 import swingProject.componentView.powerSupplyView.PowerSupplyView;
-import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableModel;
 import swingProject.gui.menu.ApplicationMenu;
 import swingProject.gui.startPanel.StartPanel;
 
@@ -53,7 +51,9 @@ public class MainFrame extends JFrame {
      * Открыть окно с информацией о программе
      */
     public void openAboutDialogEvent() {
-        JOptionPane.showMessageDialog(this, "Program for home using", "Message", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+                                      "Program for home using",
+                                      "Message", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -93,22 +93,23 @@ public class MainFrame extends JFrame {
         }
     }
 
-    public void getSelectedComponent() {
+    public void createNewComponentEvent() {
+        powerSupplyView.addNewComponentToTable();
     }
 
     /**
      * Добавить блок питания
      */
     public void powerSupplyEventAdd() {
-        new PowerSupplyDialog(this,"", true);
+        powerSupplyView.createPowerSupplyDialog();
     }
 
-    /**
-     * Внести изменения в существующий блок питания
-     */
-    public void powerSupplyEventEdit() {
-        new PowerSupplyDialog(this, "", true);
-    }
+//    /**
+//     * Внести изменения в существующий блок питания
+//     */
+//    public void  powerSupplyEventEdit() {
+//        powerSupplyView.createPowerSupplyDialog();
+//    }
 
     /**
      * Отрисовка новой панели

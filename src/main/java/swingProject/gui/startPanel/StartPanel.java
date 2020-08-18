@@ -1,15 +1,10 @@
 package swingProject.gui.startPanel;
 
 import net.miginfocom.swing.MigLayout;
-import swingProject.componentView.componentsMenu.ComponentsMenu;
 import swingProject.events.guiEvents.SetComponentsChoiceEvent;
-import swingProject.gui.MainFrame;
 import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Стартовая панель
@@ -23,8 +18,12 @@ public class StartPanel extends JPanel {
 
         JButton jButton2 = new JButton("ПК");
 
-        jButton1.setIcon(new ImageIcon("src/main/resources/icons/Components.png"));  //TODO Сместить в левый угол
-        jButton2.setIcon(new ImageIcon("src/main/resources/icons/PC.png"));        //TODO Сместить в левый угол
+        try {
+            jButton1.setIcon(new ImageIcon(StartPanel.class.getResource("/icons/Components.png")));  //TODO Сместить в левый угол
+            jButton2.setIcon(new ImageIcon(StartPanel.class.getResource("/icons/PC.png")));        //TODO Сместить в левый угол
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         setLayout(new MigLayout("center"));

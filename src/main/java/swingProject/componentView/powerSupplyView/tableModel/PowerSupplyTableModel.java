@@ -17,7 +17,8 @@ public class PowerSupplyTableModel implements TableModel {
     public PowerSupplyTableModel() {
         list = new ArrayList<>();
         for (int i = 0; i < 40; i++) {
-            list.add(new PowerSupply("Chiftec"+ i, "Chiftec650", 2012, 650, true, false));
+            list.add(new PowerSupply("Chiftec"+ i, "Chiftec650",
+                    2012, 650, true, false));
         }
     }
 

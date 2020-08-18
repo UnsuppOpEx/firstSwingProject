@@ -2,7 +2,9 @@ package swingProject.componentView.powerSupplyView;
 
 import swingProject.commons.ActionButtonPanel;
 import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableModel;
+import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.SetComponentsChoiceEvent;
+import swingProject.events.powerSupplyEvent.PowerSupplyEventAdd;
 import swingProject.events.powerSupplyEvent.PowerSupplyRemoveEvent;
 import swingProject.utils.handlers.GuiEventHandlers;
 
@@ -15,6 +17,8 @@ import java.awt.*;
 public class PowerSupplyView extends JPanel {
     private PowerSupplyTableModel powerSupplyTableModel;
     private ActionButtonPanel actionButtonPanel;
+    private PowerSupplyDialog dialog;
+
     private JTable jTable;
 
     public JTable getjTable() {
@@ -44,12 +48,17 @@ public class PowerSupplyView extends JPanel {
 
         actionButtonPanel.addActionListenerForEditButton(
                 actionEvent -> {
-                    PowerSupplyDialog dialog = new PowerSupplyDialog(
+                    dialog = new PowerSupplyDialog(
                             null, "Редактирование элемента", true
 
                     );
                 }
         );
+
+
+        actionButtonPanel.addActionListenerForAddButton(
+                actionEvent -> GuiEventHandlers.parseEvent(new PowerSupplyEventAdd())
+                    );
 
         jTable = new JTable(powerSupplyTableModel);
 
@@ -73,6 +82,23 @@ public class PowerSupplyView extends JPanel {
         jTable.clearSelection();
         jTable.repaint();
         jTable.revalidate();
+    }
+
+    public void addNewComponentToTable() {
+
+//          String model = dialog.getjTextField2().getText();
+//        int year = Integer.valueOf(String.valueOf(dialog.getjTextField3().getText()));
+//        int watt = Integer.valueOf(String.valueOf(dialog.getjTextField4().getText()));
+//        boolean KPD80 = dialog.getRadioButton().isSelected() ? true : false;
+//        boolean PFC = dialog.getRadioButton2().isSelected() ? true : false;
+
+        powerSupplyTableModel.addData(new PowerSupply("WD", "WD1000",
+                2020, 1000, true, true));
+    }
+
+    public void createPowerSupplyDialog() {
+          dialog = new PowerSupplyDialog(null,"",true);
+
     }
 
 }
