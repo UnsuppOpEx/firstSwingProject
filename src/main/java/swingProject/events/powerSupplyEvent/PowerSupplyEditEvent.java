@@ -3,11 +3,11 @@ package swingProject.events.powerSupplyEvent;
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.GuiEvent;
 
-public class PowerSupplyEventEdit extends GuiEvent {
+public class PowerSupplyEditEvent extends GuiEvent {
 
     private PowerSupply powerSupply;
 
-    public PowerSupplyEventEdit(PowerSupply powerSupply) {
+    public PowerSupplyEditEvent(PowerSupply powerSupply) {
         this.powerSupply = powerSupply;
     }
 

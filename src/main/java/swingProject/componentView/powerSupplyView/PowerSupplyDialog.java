@@ -6,40 +6,32 @@ import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Диалоговое окно для редактирования Блоков питания
  */
 public class PowerSupplyDialog extends JDialog {
     private ComponentDialog componentDialog;
-    private JPanel jPanel;
-    private String brand;
-    private JTextField jTextField;
-    private JTextField jTextField2;
-    private JTextField jTextField3;
-    private JTextField jTextField4;
-    private JRadioButton radioButton;
-    private JRadioButton radioButton1;
-    private JRadioButton radioButton2;
-    private JRadioButton radioButton3;
-    public String line = "Samsung";
+    private JPanel panel;
+    private JTextField brandTextField;
+    private JTextField modelTextField;
+    private JTextField yearTextField;
+    private JTextField wattTextField;
+    private JRadioButton kpdRadioButton;
+    private JRadioButton kpdRadioButton1;
+    private JRadioButton pfcRadioButton;
+    private JRadioButton pfcRadioButton1;
 
-    private ButtonGroup group;
-    private ButtonGroup group1;
-
-    public String getBrand() {
-        return brand;
-    }
+    private ButtonGroup kpdGroup;
+    private ButtonGroup pfcGroup;
 
     public PowerSupplyDialog(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
 
         componentDialog = new ComponentDialog();
-        jPanel = new JPanel();
-        group = new ButtonGroup();
-        group1 = new ButtonGroup();
+        panel = new JPanel();
+        kpdGroup = new ButtonGroup();
+        pfcGroup = new ButtonGroup();
 
         /**
          * Закрыть диалоговое окно
@@ -58,77 +50,71 @@ public class PowerSupplyDialog extends JDialog {
                 e -> GuiEventHandlers.parseEvent(new CreateNewComponentEvent())
         );
 
-        jPanel.setLayout(null);
+        panel.setLayout(null);
 
-        JLabel jLabel0 = new JLabel("Блок питания");
-        jLabel0.setBounds(100, 5, 260, 20);
+        JLabel powSupplyLabel = new JLabel("Блок питания");
+        powSupplyLabel.setBounds(100, 5, 260, 20);
 
-        JLabel jLabel = new JLabel("Бренд");
-        jLabel.setBounds(20, 55, 260, 20);
-        jTextField = new JTextField();
-        jTextField.setBounds(120, 55, 150, 20);
-        jTextField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                brand = jTextField.getText();
-            }
-        });
+        JLabel brandLabel = new JLabel("Бренд");
+        brandLabel.setBounds(20, 55, 260, 20);
+        brandTextField = new JTextField();
+        brandTextField.setBounds(120, 55, 150, 20);
 
-        JLabel jLabe2 = new JLabel("Модель");
-        jLabe2.setBounds(20, 95, 260, 20);
-        jTextField2 = new JTextField();
-        jTextField2.setBounds(120, 95, 150, 20);
+        JLabel modelLabel = new JLabel("Модель");
+        modelLabel.setBounds(20, 95, 260, 20);
+        modelTextField = new JTextField();
+        modelTextField.setBounds(120, 95, 150, 20);
 
-        JLabel jLabe3 = new JLabel("Год производства");
-        jLabe3.setBounds(20, 135, 260, 20);
-        jTextField3 = new JTextField();
-        jTextField3.setBounds(120, 135, 150, 20);
+        JLabel yearLabel = new JLabel("Год производства");
+        yearLabel.setBounds(20, 135, 260, 20);
+        yearTextField = new JTextField();
+        yearTextField.setBounds(120, 135, 150, 20);
 
-        JLabel jLabe4 = new JLabel("Мощность");
-        jLabe4.setBounds(20, 175, 260, 20);
-        jTextField4 = new JTextField();
-        jTextField4.setBounds(120, 175, 150, 20);
+        JLabel wattLabel = new JLabel("Мощность");
+        wattLabel.setBounds(20, 175, 260, 20);
+        wattTextField = new JTextField();
+        wattTextField.setBounds(120, 175, 150, 20);
 
-        JLabel jLabe5 = new JLabel("КПД 80+");
-        jLabe5.setBounds(20, 215, 260, 20);
-        radioButton = new JRadioButton("Да", false);
-        radioButton1 = new JRadioButton("Нет", true);
+        JLabel kpdLabel = new JLabel("КПД 80+");
+        kpdLabel.setBounds(20, 215, 260, 20);
+        kpdRadioButton = new JRadioButton("Да", false);
+        kpdRadioButton1 = new JRadioButton("Нет", true);
 
 
-                group.add(radioButton);
-                group.add(radioButton1);
-                radioButton.setBounds(130, 215, 60, 20);
-                radioButton1.setBounds(200, 215, 60, 20);
+                kpdGroup.add(kpdRadioButton);
+                kpdGroup.add(kpdRadioButton1);
+                kpdRadioButton.setBounds(130, 215, 60, 20);
+                kpdRadioButton1.setBounds(200, 215, 60, 20);
 
-                JLabel jLabe6 = new JLabel("PFC");
-                jLabe6.setBounds(20, 255, 260, 20);
-                radioButton2 = new JRadioButton("Да", false);
-                radioButton3 = new JRadioButton("Нет", true);
+                JLabel pfcLabel = new JLabel("PFC");
+                pfcLabel.setBounds(20, 255, 260, 20);
+                pfcRadioButton = new JRadioButton("Да", false);
+                pfcRadioButton1 = new JRadioButton("Нет", true);
 
-                group1.add(radioButton2);
-                group1.add(radioButton3);
-                radioButton2.setBounds(130, 255, 60, 20);
-                radioButton3.setBounds(200, 255, 60, 20);
+                pfcGroup.add(pfcRadioButton);
+                pfcGroup.add(pfcRadioButton1);
+                pfcRadioButton.setBounds(130, 255, 60, 20);
+                pfcRadioButton1.setBounds(200, 255, 60, 20);
 
-                jPanel.add(radioButton);
-                jPanel.add(radioButton1);
-                jPanel.add(radioButton2);
-                jPanel.add(radioButton3);
+                panel.add(kpdRadioButton);
+                panel.add(kpdRadioButton1);
+                panel.add(pfcRadioButton);
+                panel.add(pfcRadioButton1);
 
-                jPanel.add(jTextField);
-                jPanel.add(jTextField2);
-                jPanel.add(jTextField3);
-                jPanel.add(jTextField4);
+                panel.add(brandTextField);
+                panel.add(modelTextField);
+                panel.add(yearTextField);
+                panel.add(wattTextField);
 
-                jPanel.add(jLabel0);
-                jPanel.add(jLabel);
-                jPanel.add(jLabe2);
-                jPanel.add(jLabe3);
-                jPanel.add(jLabe4);
-                jPanel.add(jLabe5);
-                jPanel.add(jLabe6);
+                panel.add(powSupplyLabel);
+                panel.add(brandLabel);
+                panel.add(modelLabel);
+                panel.add(yearLabel);
+                panel.add(wattLabel);
+                panel.add(kpdLabel);
+                panel.add(pfcLabel);
 
-                add(jPanel);
+                add(panel);
                 add(componentDialog, BorderLayout.SOUTH);
 
                 setResizable(false);
@@ -142,28 +128,28 @@ public class PowerSupplyDialog extends JDialog {
 
             }
 
-    public JTextField getjTextField() {
-        return jTextField;
+    public JTextField getBrandTextField() {
+        return brandTextField;
     }
 
-    public JTextField getjTextField2() {
-        return jTextField2;
+    public JTextField getModelTextField() {
+        return modelTextField;
     }
 
-    public JTextField getjTextField3() {
-        return jTextField3;
+    public JTextField getYearTextField() {
+        return yearTextField;
     }
 
-    public JTextField getjTextField4() {
-        return jTextField4;
+    public JTextField getWattTextField() {
+        return wattTextField;
     }
 
-    public JRadioButton getRadioButton() {
-        return radioButton;
+    public JRadioButton getKpdRadioButton() {
+        return kpdRadioButton;
     }
 
-    public JRadioButton getRadioButton2() {
-        return radioButton2;
+    public JRadioButton getPfcRadioButton() {
+        return pfcRadioButton;
     }
 
 }

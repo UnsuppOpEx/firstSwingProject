@@ -13,48 +13,51 @@ import javax.swing.*;
 public class ApplicationMenu extends JMenuBar {
 
     public ApplicationMenu() {
-        JMenu jMenuCatalog = new JMenu("Каталог");
-        JMenu jMenuHelp = new JMenu("Помощь");
+        JMenu catalogMenu = new JMenu("Каталог");
+        JMenu helpMenu = new JMenu("Помощь");
 
-        JMenu jPc = new JMenu("ПК");
-        JMenu jList = new JMenu("Комплектующие");
-        JMenuItem jExit = new JMenuItem("Выход");
-        jExit.addActionListener(e -> GuiEventHandlers.parseEvent(new CloseApplicationEvent()));
-        JMenuItem jRules = new JMenuItem("Руководство пользователя");
-        JMenuItem jAboutProgram = new JMenuItem("О программе");
-        jAboutProgram.addActionListener(e -> GuiEventHandlers.parseEvent(new OpenAboutDialogEvent()));
+        JMenu pcMenu = new JMenu("ПК");
+        JMenu complectMenu = new JMenu("Комплектующие");
 
-        JMenuItem subMenuPc1 = new JMenuItem("Открыть");
-        JMenuItem subMenuPc2 = new JMenuItem("Ранее открытое");
-        JMenuItem subMenuPc3 = new JMenuItem("Сохранить");
-        JMenuItem subMenuPc4 = new JMenuItem("Сохранить как");
+        JMenuItem exitMenu = new JMenuItem("Выход");
+        exitMenu.addActionListener(e -> GuiEventHandlers.parseEvent(new CloseApplicationEvent()));
 
-        JMenuItem subMenuList1 = new JMenuItem("Оперативная память");
-        JMenuItem subMenuList2 = new JMenuItem("Процессор");
-        JMenuItem subMenuList3 = new JMenuItem("Материнская плата");
-        JMenuItem subMenuList4 = new JMenuItem("Жёсткий диск");
-        JMenuItem subMenuList5 = new JMenuItem("Блок питания");
+        JMenuItem rulesItem = new JMenuItem("Руководство пользователя");
 
-        jPc.add(subMenuPc1);
-        jPc.add(subMenuPc2);
-        jPc.add(subMenuPc3);
-        jPc.add(subMenuPc4);
+        JMenuItem AboutProgramItem = new JMenuItem("О программе");
+        AboutProgramItem.addActionListener(e -> GuiEventHandlers.parseEvent(new OpenAboutDialogEvent()));
 
-        jList.add(subMenuList1);
-        jList.add(subMenuList2);
-        jList.add(subMenuList3);
-        jList.add(subMenuList4);
-        jList.add(subMenuList5);
+        JMenuItem openSubMenu = new JMenuItem("Открыть");
+        JMenuItem beforeOpenSubMenu = new JMenuItem("Ранее открытое");
+        JMenuItem saveSubMenu = new JMenuItem("Сохранить");
+        JMenuItem saveAsSubMenu = new JMenuItem("Сохранить как");
 
-        jMenuCatalog.add(jPc);
-        jMenuCatalog.add(jList);
-        jMenuCatalog.addSeparator();
-        jMenuCatalog.add(jExit);
-        jMenuHelp.add(jRules);
-        jMenuHelp.add(jAboutProgram);
+        JMenuItem ramSubMenu = new JMenuItem("Оперативная память");
+        JMenuItem processorSubMenu = new JMenuItem("Процессор");
+        JMenuItem mboardSubMenu = new JMenuItem("Материнская плата");
+        JMenuItem hardDiskSubMenu = new JMenuItem("Жёсткий диск");
+        JMenuItem powSupplySubMenu = new JMenuItem("Блок питания");
 
-        add(jMenuCatalog);
-        add(jMenuHelp);
+        pcMenu.add(openSubMenu);
+        pcMenu.add(beforeOpenSubMenu);
+        pcMenu.add(saveSubMenu);
+        pcMenu.add(saveAsSubMenu);
+
+        complectMenu.add(ramSubMenu);
+        complectMenu.add(processorSubMenu);
+        complectMenu.add(mboardSubMenu);
+        complectMenu.add(hardDiskSubMenu);
+        complectMenu.add(powSupplySubMenu);
+
+        catalogMenu.add(pcMenu);
+        catalogMenu.add(complectMenu);
+        catalogMenu.addSeparator();
+        catalogMenu.add(exitMenu);
+        helpMenu.add(rulesItem);
+        helpMenu.add(AboutProgramItem);
+
+        add(catalogMenu);
+        add(helpMenu);
     }
 
 

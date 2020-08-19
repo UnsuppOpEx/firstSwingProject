@@ -15,25 +15,25 @@ public class ComponentsMenu extends JPanel {
 
     public ComponentsMenu() {
 
-        JButton jButton1 = new JButton("Процессор");
-        JButton jButton2 = new JButton("Материнская плата");
-        JButton jButton3 = new JButton("Оперативная память");
-        JButton jButton4 = new JButton("Жёсткий диск");
+        JButton processorButton = new JButton("Процессор");
+        JButton mBoardButton = new JButton("Материнская плата");
+        JButton ramButton = new JButton("Оперативная память");
+        JButton hardDiskButton = new JButton("Жёсткий диск");
 
-        JButton jButton5 = new JButton("Блок питания");
-        jButton5.addActionListener(e -> GuiEventHandlers.parseEvent(new ComponentActionEvent()));
+        JButton powSupButton = new JButton("Блок питания");
+        powSupButton.addActionListener(e -> GuiEventHandlers.parseEvent(new ComponentActionEvent()));
 
-        JButton jButton6 = new JButton("Назад");
-        jButton6.addActionListener(e -> GuiEventHandlers.parseEvent(new SetStartPanelEvent()));
+        JButton backButton = new JButton("Назад");
+        backButton.addActionListener(e -> GuiEventHandlers.parseEvent(new SetStartPanelEvent()));
 
 
         setLayout(new MigLayout("center"));
-        add(jButton1, "gaptop 50, " + BUTTON_SIZE);
-        add(jButton2, BUTTON_SIZE );
-        add(jButton3, BUTTON_SIZE);
-        add(jButton4, BUTTON_SIZE);
-        add(jButton5, BUTTON_SIZE);
-        add(jButton6, BUTTON_SIZE);
+        add(processorButton, "gaptop 50, " + BUTTON_SIZE);
+        add(mBoardButton, BUTTON_SIZE );
+        add(ramButton, BUTTON_SIZE);
+        add(hardDiskButton, BUTTON_SIZE);
+        add(powSupButton, BUTTON_SIZE);
+        add(backButton, BUTTON_SIZE);
     }
 }
 

@@ -4,7 +4,7 @@ import swingProject.commons.ActionButtonPanel;
 import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableModel;
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.SetComponentsChoiceEvent;
-import swingProject.events.powerSupplyEvent.PowerSupplyEventAdd;
+import swingProject.events.powerSupplyEvent.PowerSupplyAddEvent;
 import swingProject.events.powerSupplyEvent.PowerSupplyRemoveEvent;
 import swingProject.utils.handlers.GuiEventHandlers;
 
@@ -19,10 +19,10 @@ public class PowerSupplyView extends JPanel {
     private ActionButtonPanel actionButtonPanel;
     private PowerSupplyDialog dialog;
 
-    private JTable jTable;
+    private JTable PowerSupplyTable;
 
-    public JTable getjTable() {
-        return jTable;
+    public JTable getPowerSupplyTable() {
+        return PowerSupplyTable;
     }
 
     public PowerSupplyTableModel getPowerSupplyTableModel() {
@@ -41,7 +41,7 @@ public class PowerSupplyView extends JPanel {
         actionButtonPanel.addActionListenerForRemoveButton(
                 actionEvent -> GuiEventHandlers.parseEvent(
                         new PowerSupplyRemoveEvent(
-                                jTable.getSelectedRow()
+                                PowerSupplyTable.getSelectedRow()
                         )
                 )
         );
@@ -57,12 +57,12 @@ public class PowerSupplyView extends JPanel {
 
 
         actionButtonPanel.addActionListenerForAddButton(
-                actionEvent -> GuiEventHandlers.parseEvent(new PowerSupplyEventAdd())
+                actionEvent -> GuiEventHandlers.parseEvent(new PowerSupplyAddEvent())
                     );
 
-        jTable = new JTable(powerSupplyTableModel);
+        PowerSupplyTable = new JTable(powerSupplyTableModel);
 
-        JScrollPane jScrollPane = new JScrollPane(jTable);
+        JScrollPane jScrollPane = new JScrollPane(PowerSupplyTable);
         jScrollPane.setPreferredSize(new Dimension(750, 450));
         jScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         jScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -83,9 +83,9 @@ public class PowerSupplyView extends JPanel {
      */
     public void removePowerSupply(int index) {
         powerSupplyTableModel.removeData(index);
-        jTable.clearSelection();
-        jTable.repaint();
-        jTable.revalidate();
+        PowerSupplyTable.clearSelection();
+        PowerSupplyTable.repaint();
+        PowerSupplyTable.revalidate();
     }
 
     /**
