@@ -1,11 +1,14 @@
 package swingProject.componentView.powerSupplyView;
 
 import swingProject.commons.ComponentDialog;
+import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.CreateNewComponentEvent;
 import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Диалоговое окно для редактирования Блоков питания
@@ -46,11 +49,22 @@ public class PowerSupplyDialog extends JDialog {
         /**
          *  Создание и добавление нового элемента PowerSupply в таблицу
          */
-        componentDialog.addActionListenerForButtonOk(
-                e -> GuiEventHandlers.parseEvent(new CreateNewComponentEvent())
-        );
+        componentDialog.addActionListenerForButtonOk(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String brand = String.valueOf(brandTextField.getText());
+                String model = String.valueOf(brandTextField.getText());
+                int year = Integer.parseInt(yearTextField.getText());
+                int watt = Integer.parseInt(wattTextField.getText());
+
+                GuiEventHandlers.parseEvent(new CreateNewComponentEvent(new PowerSupply(brand, model, year, watt, true, true)));
+                setVisible(false);
+                dispose();
+            }
+        });
 
         panel.setLayout(null);
+        panel.setMinimumSize(new Dimension(350, 450));
 
         JLabel powSupplyLabel = new JLabel("Блок питания");
         powSupplyLabel.setBounds(100, 5, 260, 20);
@@ -65,7 +79,7 @@ public class PowerSupplyDialog extends JDialog {
         modelTextField = new JTextField();
         modelTextField.setBounds(120, 95, 150, 20);
 
-        JLabel yearLabel = new JLabel("Год производства");
+        JLabel yearLabel = new JLabel("Год производ.");
         yearLabel.setBounds(20, 135, 260, 20);
         yearTextField = new JTextField();
         yearTextField.setBounds(120, 135, 150, 20);
@@ -127,30 +141,6 @@ public class PowerSupplyDialog extends JDialog {
                 new PowerSupplyDialog(null, "", true);
 
             }
-
-    public JTextField getBrandTextField() {
-        return brandTextField;
-    }
-
-    public JTextField getModelTextField() {
-        return modelTextField;
-    }
-
-    public JTextField getYearTextField() {
-        return yearTextField;
-    }
-
-    public JTextField getWattTextField() {
-        return wattTextField;
-    }
-
-    public JRadioButton getKpdRadioButton() {
-        return kpdRadioButton;
-    }
-
-    public JRadioButton getPfcRadioButton() {
-        return pfcRadioButton;
-    }
 
 }
 

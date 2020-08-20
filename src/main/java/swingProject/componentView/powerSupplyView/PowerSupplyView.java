@@ -38,6 +38,7 @@ public class PowerSupplyView extends JPanel {
                 actionEvent -> GuiEventHandlers.parseEvent(new SetComponentsChoiceEvent())
         );
 
+        //Удаляем выбранный блок питания из таблицы
         actionButtonPanel.addActionListenerForRemoveButton(
                 actionEvent -> GuiEventHandlers.parseEvent(
                         new PowerSupplyRemoveEvent(
@@ -45,7 +46,8 @@ public class PowerSupplyView extends JPanel {
                         )
                 )
         );
-        //
+
+        //Создаем диалоговое окно для редактирования выбранного блока питания
         actionButtonPanel.addActionListenerForEditButton(
                 actionEvent -> {
                     dialog = new PowerSupplyDialog(
@@ -62,17 +64,17 @@ public class PowerSupplyView extends JPanel {
 
         PowerSupplyTable = new JTable(powerSupplyTableModel);
 
-        JScrollPane jScrollPane = new JScrollPane(PowerSupplyTable);
-        jScrollPane.setPreferredSize(new Dimension(750, 450));
-        jScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        jScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        JScrollPane scrollPanel = new JScrollPane(PowerSupplyTable);
+        scrollPanel.setPreferredSize(new Dimension(750, 450));
+        scrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         JLabel jLabel = new JLabel("Блоки питания");
 
         setLayout(new BorderLayout());
 
         add(jLabel, BorderLayout.NORTH);
-        add(jScrollPane, BorderLayout.CENTER);
+        add(scrollPanel, BorderLayout.CENTER);
         add(actionButtonPanel, BorderLayout.PAGE_END);
 
     }
@@ -83,24 +85,18 @@ public class PowerSupplyView extends JPanel {
      */
     public void removePowerSupply(int index) {
         powerSupplyTableModel.removeData(index);
-        PowerSupplyTable.clearSelection();
-        PowerSupplyTable.repaint();
-        PowerSupplyTable.revalidate();
+        replaceTableModel();
     }
 
     /**
      * Создает новый объект PowerSupply и добавляет в таблицу
+     * @param powerSupply
      */
-    public void addNewComponentToTable() {
-
-//        int year = Integer.valueOf(String.valueOf(dialog.getjTextField3().getText()));
-//        int watt = Integer.valueOf(String.valueOf(dialog.getjTextField4().getText()));
-//        boolean KPD80 = dialog.getRadioButton().isSelected() ? true : false;
-//        boolean PFC = dialog.getRadioButton2().isSelected() ? true : false;
+    public void addNewComponentToTable(PowerSupply powerSupply) {
 
         try {
-            powerSupplyTableModel.addData(new PowerSupply(dialog.getBrand(), "WD1000",
-                    2020, 1000, true, true));
+            powerSupplyTableModel.addData(powerSupply);
+            replaceTableModel();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     this,
@@ -113,16 +109,24 @@ public class PowerSupplyView extends JPanel {
                     "Компонент добавлен",
                     "Message", JOptionPane.INFORMATION_MESSAGE
                     );
-
     }
 
     /**
      * Создаёт новое диалоговое окно
-      */
+     */
     public void createPowerSupplyDialog() {
-            dialog = new PowerSupplyDialog(null,"",true);
+            dialog = new PowerSupplyDialog(null,"Добавление элемента",true);
 
         }
 
+    /**
+     * Обновление значений таблицы
+     */
+    public void replaceTableModel() {
+        PowerSupplyTable.clearSelection();
+        PowerSupplyTable.repaint();
+        PowerSupplyTable.revalidate();
     }
+
+}
 

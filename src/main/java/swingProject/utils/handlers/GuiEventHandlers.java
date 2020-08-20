@@ -56,7 +56,7 @@ public abstract class GuiEventHandlers {
             }
 
             else if(event instanceof CreateNewComponentEvent) {
-                mainFrame.createNewComponentEvent();
+                mainFrame.createNewComponentEvent(((CreateNewComponentEvent) event).getPowerSupply());
             }
 
 //            else if(event instanceof PowerSupplyEventEdit) {

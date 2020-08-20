@@ -1,8 +1,8 @@
 package swingProject.gui;
 
 import swingProject.componentView.componentsMenu.ComponentsMenu;
-import swingProject.componentView.powerSupplyView.PowerSupplyDialog;
 import swingProject.componentView.powerSupplyView.PowerSupplyView;
+import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.gui.menu.ApplicationMenu;
 import swingProject.gui.startPanel.StartPanel;
 
@@ -94,8 +94,8 @@ public class MainFrame extends JFrame {
         }
     }
 
-    public void createNewComponentEvent() {
-        powerSupplyView.addNewComponentToTable();
+    public void createNewComponentEvent(PowerSupply powerSupply) {
+        powerSupplyView.addNewComponentToTable(powerSupply);
     }
 
     /**
@@ -122,4 +122,5 @@ public class MainFrame extends JFrame {
         contentPanel.revalidate();
         contentPanel.repaint();
     }
+
 }
