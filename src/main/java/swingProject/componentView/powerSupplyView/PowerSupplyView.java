@@ -38,7 +38,9 @@ public class PowerSupplyView extends JPanel {
                 actionEvent -> GuiEventHandlers.parseEvent(new SetComponentsChoiceEvent())
         );
 
-        //Удаляем выбранный блок питания из таблицы
+        /**
+         * Удаляет выбранный блок питания из таблицы
+         */
         actionButtonPanel.addActionListenerForRemoveButton(
                 actionEvent -> GuiEventHandlers.parseEvent(
                         new PowerSupplyRemoveEvent(
@@ -47,7 +49,9 @@ public class PowerSupplyView extends JPanel {
                 )
         );
 
-        //Создаем диалоговое окно для редактирования выбранного блока питания
+        /**
+         * Создает диалоговое окно для редактирования выбранного блока питания
+         */
         actionButtonPanel.addActionListenerForEditButton(
                 actionEvent -> {
                     dialog = new PowerSupplyDialog(
@@ -69,11 +73,11 @@ public class PowerSupplyView extends JPanel {
         scrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-        JLabel jLabel = new JLabel("Блоки питания");
+        JLabel headLineLabel = new JLabel("Блоки питания");
 
         setLayout(new BorderLayout());
 
-        add(jLabel, BorderLayout.NORTH);
+        add(headLineLabel, BorderLayout.NORTH);
         add(scrollPanel, BorderLayout.CENTER);
         add(actionButtonPanel, BorderLayout.PAGE_END);
 
