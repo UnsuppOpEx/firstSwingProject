@@ -58,8 +58,11 @@ public class PowerSupplyDialog extends JDialog {
                 int year = Integer.parseInt(yearTextField.getText());  //TODO Обработка исключений
                 int watt = Integer.parseInt(wattTextField.getText());  //TODO Обработка исключений
 
+                boolean kpd = kpdRadioButton.isSelected();
+                boolean pfc = pfcRadioButton.isSelected();
 
-                GuiEventHandlers.parseEvent(new CreateNewComponentEvent(new PowerSupply(brand, model, year, watt, true, true)));
+
+                GuiEventHandlers.parseEvent(new CreateNewComponentEvent(new PowerSupply(brand, model, year, watt, kpd, pfc)));
                 setVisible(false);
                 dispose();
             }
@@ -146,8 +149,8 @@ public class PowerSupplyDialog extends JDialog {
         modelTextField.setText(powerSupply.getModel());
         yearTextField.setText(String.valueOf(powerSupply.getYearRelease()));
         wattTextField.setText(String.valueOf(powerSupply.getNominalWatt()));
-        kpdRadioButton.setSelected(true);
-        pfcRadioButton.setSelected(true);
+        kpdRadioButton.setSelected(powerSupply.isCertify80Plus());
+        pfcRadioButton.setSelected(powerSupply.isPFC());
     }
 
     public static void main(String[] args) {
