@@ -52,11 +52,25 @@ public class PowerSupplyDialog extends JDialog {
         componentDialog.addActionListenerForButtonOk(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                int year = 0;
+                int watt = 0;
+
+                try {
+                    year = Integer.parseInt(yearTextField.getText());
+                    watt = Integer.parseInt(wattTextField.getText());
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Введены неправильные параметры",
+                            "Message",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
                 String brand = String.valueOf(brandTextField.getText());
                 String model = String.valueOf(brandTextField.getText());
-
-                int year = Integer.parseInt(yearTextField.getText());  //TODO Обработка исключений
-                int watt = Integer.parseInt(wattTextField.getText());  //TODO Обработка исключений
 
                 boolean kpd = kpdRadioButton.isSelected();
                 boolean pfc = pfcRadioButton.isSelected();
