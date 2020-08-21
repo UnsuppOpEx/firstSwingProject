@@ -105,12 +105,13 @@ public class MainFrame extends JFrame {
         powerSupplyView.createPowerSupplyDialog();
     }
 
-//    /**
-//     * Внести изменения в существующий блок питания
-//     */
-//    public void  powerSupplyEventEdit() {
-//        powerSupplyView.createPowerSupplyDialog();
-//    }
+    /**
+     * Внести изменения в существующий блок питания
+     * @param powerSupply
+     */
+    public void  powerSupplyEditEvent(PowerSupply powerSupply) {
+        powerSupplyView.createPowerSupplyDialogEdit(powerSupply);
+    }
 
     /**
      * Отрисовка новой панели

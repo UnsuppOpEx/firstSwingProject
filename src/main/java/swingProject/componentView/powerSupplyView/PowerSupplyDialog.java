@@ -54,8 +54,10 @@ public class PowerSupplyDialog extends JDialog {
             public void actionPerformed(ActionEvent e) {
                 String brand = String.valueOf(brandTextField.getText());
                 String model = String.valueOf(brandTextField.getText());
-                int year = Integer.parseInt(yearTextField.getText());
-                int watt = Integer.parseInt(wattTextField.getText());
+
+                int year = Integer.parseInt(yearTextField.getText());  //TODO Обработка исключений
+                int watt = Integer.parseInt(wattTextField.getText());  //TODO Обработка исключений
+
 
                 GuiEventHandlers.parseEvent(new CreateNewComponentEvent(new PowerSupply(brand, model, year, watt, true, true)));
                 setVisible(false);
@@ -136,8 +138,19 @@ public class PowerSupplyDialog extends JDialog {
                 setVisible(true);
             }
 
+    /**
+     *  Установить поля выбранного компонента
+     */
+    public void setFieldsForDialog(PowerSupply powerSupply) {
+        brandTextField.setText(powerSupply.getManufacturer());
+        modelTextField.setText(powerSupply.getModel());
+        yearTextField.setText(String.valueOf(powerSupply.getYearRelease()));
+        wattTextField.setText(String.valueOf(powerSupply.getNominalWatt()));
+        kpdRadioButton.setSelected(true);
+        pfcRadioButton.setSelected(true);
+    }
 
-            public static void main(String[] args) {
+    public static void main(String[] args) {
                 new PowerSupplyDialog(null, "", true);
 
             }

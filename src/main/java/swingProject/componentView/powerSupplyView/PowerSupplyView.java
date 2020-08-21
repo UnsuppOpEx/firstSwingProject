@@ -5,11 +5,14 @@ import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableMod
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.SetComponentsChoiceEvent;
 import swingProject.events.powerSupplyEvent.PowerSupplyAddEvent;
+import swingProject.events.powerSupplyEvent.PowerSupplyEditEvent;
 import swingProject.events.powerSupplyEvent.PowerSupplyRemoveEvent;
 import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Таблица с Блоками питания
@@ -19,10 +22,10 @@ public class PowerSupplyView extends JPanel {
     private ActionButtonPanel actionButtonPanel;
     private PowerSupplyDialog dialog;
 
-    private JTable PowerSupplyTable;
+    private JTable powerSupplyTable;
 
     public JTable getPowerSupplyTable() {
-        return PowerSupplyTable;
+        return powerSupplyTable;
     }
 
     public PowerSupplyTableModel getPowerSupplyTableModel() {
@@ -44,7 +47,7 @@ public class PowerSupplyView extends JPanel {
         actionButtonPanel.addActionListenerForRemoveButton(
                 actionEvent -> GuiEventHandlers.parseEvent(
                         new PowerSupplyRemoveEvent(
-                                PowerSupplyTable.getSelectedRow()
+                                powerSupplyTable.getSelectedRow()
                         )
                 )
         );
@@ -52,23 +55,25 @@ public class PowerSupplyView extends JPanel {
         /**
          * Создает диалоговое окно для редактирования выбранного блока питания
          */
-        actionButtonPanel.addActionListenerForEditButton(
-                actionEvent -> {
-                    dialog = new PowerSupplyDialog(
-                            null, "Редактирование элемента", true
+        actionButtonPanel.addActionListenerForEditButton(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                GuiEventHandlers.parseEvent(
+                        new PowerSupplyEditEvent(powerSupplyTableModel.getList(powerSupplyTable.getSelectedRow())));
+            }
+        });
 
-                    );
-                }
-        );
-
-
+        /**
+         * Создает диалоговое окно для добавления нового компонента
+         */
         actionButtonPanel.addActionListenerForAddButton(
                 actionEvent -> GuiEventHandlers.parseEvent(new PowerSupplyAddEvent())
                     );
 
-        PowerSupplyTable = new JTable(powerSupplyTableModel);
 
-        JScrollPane scrollPanel = new JScrollPane(PowerSupplyTable);
+        powerSupplyTable = new JTable(powerSupplyTableModel);
+
+        JScrollPane scrollPanel = new JScrollPane(powerSupplyTable);
         scrollPanel.setPreferredSize(new Dimension(750, 450));
         scrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -116,20 +121,29 @@ public class PowerSupplyView extends JPanel {
     }
 
     /**
-     * Создаёт новое диалоговое окно
+     * Создаёт новое диалоговое окно для добавления компонента
      */
     public void createPowerSupplyDialog() {
-            dialog = new PowerSupplyDialog(null,"Добавление элемента",true);
+        dialog = new PowerSupplyDialog(null,"Добавление компонента",true);
 
         }
+
+    /**
+     * Создаёт новое диалоговое окно для редактирования компонента
+     * @param powerSupply
+     */
+    public void createPowerSupplyDialogEdit(PowerSupply powerSupply) {
+        dialog = new PowerSupplyDialog(null,"Редактирование компонента",true);
+        dialog.setFieldsForDialog(powerSupply);
+    }
 
     /**
      * Обновление значений таблицы
      */
     public void replaceTableModel() {
-        PowerSupplyTable.clearSelection();
-        PowerSupplyTable.repaint();
-        PowerSupplyTable.revalidate();
+        powerSupplyTable.clearSelection();
+        powerSupplyTable.repaint();
+        powerSupplyTable.revalidate();
     }
 
 }

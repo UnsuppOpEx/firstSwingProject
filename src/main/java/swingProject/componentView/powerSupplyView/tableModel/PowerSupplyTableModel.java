@@ -91,4 +91,9 @@ public class PowerSupplyTableModel implements TableModel {
 
     }
 
+    public PowerSupply getList(int index) {
+        PowerSupply powerSupply = list.get(index);
+        return powerSupply;
+    }
+
 }
