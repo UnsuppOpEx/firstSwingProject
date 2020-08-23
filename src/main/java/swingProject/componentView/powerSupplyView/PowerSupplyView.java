@@ -59,7 +59,9 @@ public class PowerSupplyView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GuiEventHandlers.parseEvent(
-                        new PowerSupplyEditEvent(powerSupplyTableModel.getList(powerSupplyTable.getSelectedRow())));
+                        new PowerSupplyEditEvent(
+                                powerSupplyTableModel.getList(
+                                        powerSupplyTable.getSelectedRow())));
             }
         });
 
@@ -124,7 +126,7 @@ public class PowerSupplyView extends JPanel {
      * Создаёт новое диалоговое окно для добавления компонента
      */
     public void createPowerSupplyDialog() {
-        dialog = new PowerSupplyDialog(null,"Добавление компонента",true);
+        dialog = new PowerSupplyDialog(null,"Добавление компонента",true, null);
 
         }
 
@@ -133,8 +135,9 @@ public class PowerSupplyView extends JPanel {
      * @param powerSupply
      */
     public void createPowerSupplyDialogEdit(PowerSupply powerSupply) {
-        dialog = new PowerSupplyDialog(null,"Редактирование компонента",true);
-        dialog.setFieldsForDialog(powerSupply);
+        System.out.println("createPowerSupplyDialogEdit");
+        dialog = new PowerSupplyDialog(null,"Редактирование компонента",true, powerSupply);
+//
     }
 
     /**

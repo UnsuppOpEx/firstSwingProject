@@ -24,12 +24,14 @@ public class PowerSupplyDialog extends JDialog {
     private JRadioButton kpdRadioButton1;
     private JRadioButton pfcRadioButton;
     private JRadioButton pfcRadioButton1;
-
+    private PowerSupply powerSupplyEdit;
     private ButtonGroup kpdGroup;
     private ButtonGroup pfcGroup;
 
-    public PowerSupplyDialog(Frame owner, String title, boolean modal) {
+
+    public PowerSupplyDialog(Frame owner, String title, boolean modal, PowerSupply powerSupply) {
         super(owner, title, modal);
+        powerSupplyEdit = powerSupply;
 
         componentDialog = new ComponentDialog();
         panel = new JPanel();
@@ -53,8 +55,8 @@ public class PowerSupplyDialog extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int year = 0;
-                int watt = 0;
+                int year;
+                int watt;
 
                 try {
                     year = Integer.parseInt(yearTextField.getText());
@@ -74,7 +76,6 @@ public class PowerSupplyDialog extends JDialog {
 
                 boolean kpd = kpdRadioButton.isSelected();
                 boolean pfc = pfcRadioButton.isSelected();
-
 
                 GuiEventHandlers.parseEvent(new CreateNewComponentEvent(new PowerSupply(brand, model, year, watt, kpd, pfc)));
                 setVisible(false);
@@ -113,65 +114,70 @@ public class PowerSupplyDialog extends JDialog {
         kpdRadioButton = new JRadioButton("Да", false);
         kpdRadioButton1 = new JRadioButton("Нет", true);
 
+        kpdGroup.add(kpdRadioButton);
+        kpdGroup.add(kpdRadioButton1);
+        kpdRadioButton.setBounds(130, 215, 60, 20);
+        kpdRadioButton1.setBounds(200, 215, 60, 20);
 
-                kpdGroup.add(kpdRadioButton);
-                kpdGroup.add(kpdRadioButton1);
-                kpdRadioButton.setBounds(130, 215, 60, 20);
-                kpdRadioButton1.setBounds(200, 215, 60, 20);
+        JLabel pfcLabel = new JLabel("PFC");
+        pfcLabel.setBounds(20, 255, 260, 20);
+        pfcRadioButton = new JRadioButton("Да", false);
+        pfcRadioButton1 = new JRadioButton("Нет", true);
 
-                JLabel pfcLabel = new JLabel("PFC");
-                pfcLabel.setBounds(20, 255, 260, 20);
-                pfcRadioButton = new JRadioButton("Да", false);
-                pfcRadioButton1 = new JRadioButton("Нет", true);
+        pfcGroup.add(pfcRadioButton);
+        pfcGroup.add(pfcRadioButton1);
+        pfcRadioButton.setBounds(130, 255, 60, 20);
+        pfcRadioButton1.setBounds(200, 255, 60, 20);
 
-                pfcGroup.add(pfcRadioButton);
-                pfcGroup.add(pfcRadioButton1);
-                pfcRadioButton.setBounds(130, 255, 60, 20);
-                pfcRadioButton1.setBounds(200, 255, 60, 20);
+        if (powerSupplyEdit != null) {
+            setFieldsForDialog(powerSupplyEdit);
+        }
 
-                panel.add(kpdRadioButton);
-                panel.add(kpdRadioButton1);
-                panel.add(pfcRadioButton);
-                panel.add(pfcRadioButton1);
+        panel.add(kpdRadioButton);
+        panel.add(kpdRadioButton1);
+        panel.add(pfcRadioButton);
+        panel.add(pfcRadioButton1);
 
-                panel.add(brandTextField);
-                panel.add(modelTextField);
-                panel.add(yearTextField);
-                panel.add(wattTextField);
+        panel.add(brandTextField);
+        panel.add(modelTextField);
+        panel.add(yearTextField);
+        panel.add(wattTextField);
 
-                panel.add(powSupplyLabel);
-                panel.add(brandLabel);
-                panel.add(modelLabel);
-                panel.add(yearLabel);
-                panel.add(wattLabel);
-                panel.add(kpdLabel);
-                panel.add(pfcLabel);
+        panel.add(powSupplyLabel);
+        panel.add(brandLabel);
+        panel.add(modelLabel);
+        panel.add(yearLabel);
+        panel.add(wattLabel);
+        panel.add(kpdLabel);
+        panel.add(pfcLabel);
 
-                add(panel);
-                add(componentDialog, BorderLayout.SOUTH);
+        add(panel);
+        add(componentDialog, BorderLayout.SOUTH);
 
-                setResizable(false);
-                setSize(new Dimension(300, 400));
-                setVisible(true);
-            }
-
-    /**
-     *  Установить поля выбранного компонента
-     */
-    public void setFieldsForDialog(PowerSupply powerSupply) {
-        brandTextField.setText(powerSupply.getManufacturer());
-        modelTextField.setText(powerSupply.getModel());
-        yearTextField.setText(String.valueOf(powerSupply.getYearRelease()));
-        wattTextField.setText(String.valueOf(powerSupply.getNominalWatt()));
-        kpdRadioButton.setSelected(powerSupply.isCertify80Plus());
-        pfcRadioButton.setSelected(powerSupply.isPFC());
+        setResizable(false);
+        setSize(new Dimension(300, 400));
+        setVisible(true);
     }
 
-    public static void main(String[] args) {
-                new PowerSupplyDialog(null, "", true);
+    /**
+     * Установить поля выбранного компонента
+     */
+    public void setFieldsForDialog(PowerSupply powerSupplyEdit) {
 
-            }
+        brandTextField.setText(powerSupplyEdit.getManufacturer());
+        modelTextField.setText(powerSupplyEdit.getModel());
+        yearTextField.setText(String.valueOf(powerSupplyEdit.getYearRelease()));
+        wattTextField.setText(String.valueOf(powerSupplyEdit.getNominalWatt()));
+        kpdRadioButton.setSelected(powerSupplyEdit.isCertify80Plus());
+        pfcRadioButton.setSelected(powerSupplyEdit.isPFC());
 
+
+//    public static void main(String[] args) {
+//                new PowerSupplyDialog(null, "", true);
+//
+//            }
+
+    }
 }
 
 

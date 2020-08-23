@@ -1,5 +1,6 @@
 package swingProject.gui;
 
+import org.w3c.dom.ls.LSOutput;
 import swingProject.componentView.componentsMenu.ComponentsMenu;
 import swingProject.componentView.powerSupplyView.PowerSupplyView;
 import swingProject.entities.computerComponents.PowerSupply;
@@ -110,6 +111,7 @@ public class MainFrame extends JFrame {
      * @param powerSupply
      */
     public void  powerSupplyEditEvent(PowerSupply powerSupply) {
+        System.out.println("powerSupplyEditEvent");
         powerSupplyView.createPowerSupplyDialogEdit(powerSupply);
     }
 
