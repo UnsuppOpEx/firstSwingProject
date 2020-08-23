@@ -1,6 +1,7 @@
 package swingProject.componentView.powerSupplyView;
 
 import swingProject.commons.ActionButtonPanel;
+import swingProject.commons.Actions;
 import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableModel;
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.SetComponentsChoiceEvent;
@@ -61,7 +62,9 @@ public class PowerSupplyView extends JPanel {
                 GuiEventHandlers.parseEvent(
                         new PowerSupplyEditEvent(
                                 powerSupplyTableModel.getList(
-                                        powerSupplyTable.getSelectedRow())));
+                                        powerSupplyTable.getSelectedRow()),
+                                            Actions.UPDATE_ACTION)
+                );
             }
         });
 
@@ -126,17 +129,17 @@ public class PowerSupplyView extends JPanel {
      * Создаёт новое диалоговое окно для добавления компонента
      */
     public void createPowerSupplyDialog() {
-        dialog = new PowerSupplyDialog(null,"Добавление компонента",true, null);
+        dialog = new PowerSupplyDialog(null,"Добавление компонента",true, null, null);
 
         }
 
     /**
      * Создаёт новое диалоговое окно для редактирования компонента
      * @param powerSupply
+     * @param action
      */
-    public void createPowerSupplyDialogEdit(PowerSupply powerSupply) {
-        System.out.println("createPowerSupplyDialogEdit");
-        dialog = new PowerSupplyDialog(null,"Редактирование компонента",true, powerSupply);
+    public void createPowerSupplyDialogEdit(PowerSupply powerSupply, Actions action) {
+        dialog = new PowerSupplyDialog(null,"Редактирование компонента",true, powerSupply, action);
 //
     }
 
@@ -148,6 +151,7 @@ public class PowerSupplyView extends JPanel {
         powerSupplyTable.repaint();
         powerSupplyTable.revalidate();
     }
+
 
 }
 

@@ -1,8 +1,10 @@
 package swingProject.componentView.powerSupplyView;
 
+import swingProject.commons.Actions;
 import swingProject.commons.ComponentDialog;
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.CreateNewComponentEvent;
+import swingProject.events.guiEvents.UpdateComponentEvent;
 import swingProject.utils.handlers.GuiEventHandlers;
 
 import javax.swing.*;
@@ -25,13 +27,15 @@ public class PowerSupplyDialog extends JDialog {
     private JRadioButton pfcRadioButton;
     private JRadioButton pfcRadioButton1;
     private PowerSupply powerSupplyEdit;
+    private Actions actionsValue;
     private ButtonGroup kpdGroup;
     private ButtonGroup pfcGroup;
 
 
-    public PowerSupplyDialog(Frame owner, String title, boolean modal, PowerSupply powerSupply) {
+    public PowerSupplyDialog(Frame owner, String title, boolean modal, PowerSupply powerSupply, Actions actions) {
         super(owner, title, modal);
         powerSupplyEdit = powerSupply;
+        actionsValue = actions;
 
         componentDialog = new ComponentDialog();
         panel = new JPanel();
@@ -77,7 +81,15 @@ public class PowerSupplyDialog extends JDialog {
                 boolean kpd = kpdRadioButton.isSelected();
                 boolean pfc = pfcRadioButton.isSelected();
 
-                GuiEventHandlers.parseEvent(new CreateNewComponentEvent(new PowerSupply(brand, model, year, watt, kpd, pfc)));
+                if(actions == Actions.UPDATE_ACTION) {
+                    GuiEventHandlers.parseEvent(new UpdateComponentEvent(powerSupplyEdit));
+                }
+
+                else
+                    GuiEventHandlers.parseEvent(new CreateNewComponentEvent(
+                        new PowerSupply(
+                                brand, model, year, watt, kpd, pfc))
+                );
                 setVisible(false);
                 dispose();
             }
@@ -166,11 +178,11 @@ public class PowerSupplyDialog extends JDialog {
 
         brandTextField.setText(powerSupplyEdit.getManufacturer());
         modelTextField.setText(powerSupplyEdit.getModel());
+        modelTextField.setEnabled(false);
         yearTextField.setText(String.valueOf(powerSupplyEdit.getYearRelease()));
         wattTextField.setText(String.valueOf(powerSupplyEdit.getNominalWatt()));
         kpdRadioButton.setSelected(powerSupplyEdit.isCertify80Plus());
         pfcRadioButton.setSelected(powerSupplyEdit.isPFC());
-
 
 //    public static void main(String[] args) {
 //                new PowerSupplyDialog(null, "", true);

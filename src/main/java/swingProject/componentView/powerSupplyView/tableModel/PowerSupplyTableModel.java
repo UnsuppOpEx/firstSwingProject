@@ -96,4 +96,13 @@ public class PowerSupplyTableModel implements TableModel {
         return powerSupply;
     }
 
+    public void updateComponent(PowerSupply powerSupply) {
+        for (PowerSupply component : list) {
+            if (component.getModel().equals(powerSupply.getModel())) {
+                list.remove(component);
+                list.add(powerSupply);
+            }
+        }
+    }
+
 }
