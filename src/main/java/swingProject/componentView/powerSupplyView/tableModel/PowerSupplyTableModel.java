@@ -96,13 +96,15 @@ public class PowerSupplyTableModel implements TableModel {
         return powerSupply;
     }
 
-    public void updateComponent(PowerSupply powerSupply) {
-        for (PowerSupply component : list) {
-            if (component.getModel().equals(powerSupply.getModel())) {
-                list.remove(component);
-                list.add(powerSupply);
-            }
+    /**
+     * Добавление редактированного компонента в таблицу.
+     * @param powerSupply
+     * @param index
+     */
+    public void updateComponent(PowerSupply powerSupply, int index) {
+        removeData(index);
+        addData(powerSupply);
+
         }
-    }
 
 }

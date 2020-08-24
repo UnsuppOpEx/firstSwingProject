@@ -27,15 +27,17 @@ public class PowerSupplyDialog extends JDialog {
     private JRadioButton pfcRadioButton;
     private JRadioButton pfcRadioButton1;
     private PowerSupply powerSupplyEdit;
+    private int indexEdit;
     private Actions actionsValue;
     private ButtonGroup kpdGroup;
     private ButtonGroup pfcGroup;
 
 
-    public PowerSupplyDialog(Frame owner, String title, boolean modal, PowerSupply powerSupply, Actions actions) {
+    public PowerSupplyDialog(Frame owner, String title, boolean modal, PowerSupply powerSupply, Actions actions, int index) {
         super(owner, title, modal);
         powerSupplyEdit = powerSupply;
         actionsValue = actions;
+        indexEdit = index;
 
         componentDialog = new ComponentDialog();
         panel = new JPanel();
@@ -76,13 +78,14 @@ public class PowerSupplyDialog extends JDialog {
                 }
 
                 String brand = String.valueOf(brandTextField.getText());
-                String model = String.valueOf(brandTextField.getText());
+                String model = String.valueOf(modelTextField.getText());
 
                 boolean kpd = kpdRadioButton.isSelected();
                 boolean pfc = pfcRadioButton.isSelected();
 
                 if(actions == Actions.UPDATE_ACTION) {
-                    GuiEventHandlers.parseEvent(new UpdateComponentEvent(powerSupplyEdit));
+                    GuiEventHandlers.parseEvent(new UpdateComponentEvent(new PowerSupply(
+                            brand, model, year, watt, kpd, pfc) , indexEdit));
                 }
 
                 else
@@ -177,7 +180,7 @@ public class PowerSupplyDialog extends JDialog {
     public void setFieldsForDialog(PowerSupply powerSupplyEdit) {
 
         brandTextField.setText(powerSupplyEdit.getManufacturer());
-        modelTextField.setText(powerSupplyEdit.getModel());
+        modelTextField.setText(String.valueOf(powerSupplyEdit.getModel()));
         modelTextField.setEnabled(false);
         yearTextField.setText(String.valueOf(powerSupplyEdit.getYearRelease()));
         wattTextField.setText(String.valueOf(powerSupplyEdit.getNominalWatt()));

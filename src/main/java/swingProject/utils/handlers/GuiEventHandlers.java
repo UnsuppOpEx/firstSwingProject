@@ -1,6 +1,5 @@
 package swingProject.utils.handlers;
 
-import swingProject.commons.Actions;
 import swingProject.events.guiEvents.*;
 import swingProject.events.powerSupplyEvent.PowerSupplyAddEvent;
 import swingProject.events.powerSupplyEvent.PowerSupplyEditEvent;
@@ -65,11 +64,14 @@ public abstract class GuiEventHandlers {
             else if(event instanceof PowerSupplyEditEvent) {
                 mainFrame.powerSupplyEditEvent(
                         ((PowerSupplyEditEvent) event).getPowerSupply(),
-                        ((PowerSupplyEditEvent) event).getActions());
+                        ((PowerSupplyEditEvent) event).getActions(),
+                        ((PowerSupplyEditEvent) event).getIndex());
             }
 
             else if(event instanceof UpdateComponentEvent) {
-                mainFrame.updateComponentEvent(((UpdateComponentEvent) event).getPowerSupply());
+                mainFrame.updateComponentEvent(
+                        ((UpdateComponentEvent) event).getPowerSupply(),
+                        ((UpdateComponentEvent) event).getIndex());
             }
 
         }

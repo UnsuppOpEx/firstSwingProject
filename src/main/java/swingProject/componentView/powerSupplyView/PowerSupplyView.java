@@ -63,7 +63,8 @@ public class PowerSupplyView extends JPanel {
                         new PowerSupplyEditEvent(
                                 powerSupplyTableModel.getList(
                                         powerSupplyTable.getSelectedRow()),
-                                            Actions.UPDATE_ACTION)
+                                            Actions.UPDATE_ACTION,
+                                                powerSupplyTable.getSelectedRow())
                 );
             }
         });
@@ -129,7 +130,7 @@ public class PowerSupplyView extends JPanel {
      * Создаёт новое диалоговое окно для добавления компонента
      */
     public void createPowerSupplyDialog() {
-        dialog = new PowerSupplyDialog(null,"Добавление компонента",true, null, null);
+        dialog = new PowerSupplyDialog(null,"Добавление компонента",true, null, null, 0);
 
         }
 
@@ -138,9 +139,9 @@ public class PowerSupplyView extends JPanel {
      * @param powerSupply
      * @param action
      */
-    public void createPowerSupplyDialogEdit(PowerSupply powerSupply, Actions action) {
-        dialog = new PowerSupplyDialog(null,"Редактирование компонента",true, powerSupply, action);
-//
+    public void createPowerSupplyDialogEdit(PowerSupply powerSupply, Actions action, int index) {
+        dialog = new PowerSupplyDialog(
+                null, "Редактирование компонента",true, powerSupply, action, index);
     }
 
     /**

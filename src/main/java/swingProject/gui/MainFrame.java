@@ -1,6 +1,5 @@
 package swingProject.gui;
 
-import org.w3c.dom.ls.LSOutput;
 import swingProject.commons.Actions;
 import swingProject.componentView.componentsMenu.ComponentsMenu;
 import swingProject.componentView.powerSupplyView.PowerSupplyView;
@@ -110,17 +109,20 @@ public class MainFrame extends JFrame {
     /**
      * Внести изменения в существующий блок питания
      * @param powerSupply
+     * @param index
      */
-    public void  powerSupplyEditEvent(PowerSupply powerSupply, Actions action) {
-        powerSupplyView.createPowerSupplyDialogEdit(powerSupply, action);
+    public void  powerSupplyEditEvent(PowerSupply powerSupply, Actions action, int index) {
+        powerSupplyView.createPowerSupplyDialogEdit(powerSupply, action, index);
     }
 
     /**
      * Обновление компонента в таблице
      * @param powerSupply
+     * @param index
      */
-    public void updateComponentEvent(PowerSupply powerSupply) {
-        powerSupplyView.getPowerSupplyTableModel().updateComponent(powerSupply);
+    public void updateComponentEvent(PowerSupply powerSupply, int index) {
+        powerSupplyView.getPowerSupplyTableModel().updateComponent(powerSupply, index);
+        powerSupplyView.replaceTableModel();
     }
 
     /**
