@@ -2,6 +2,7 @@ package swingProject.componentView.powerSupplyView;
 
 import swingProject.commons.Actions;
 import swingProject.commons.ComponentDialog;
+import swingProject.commons.GuiHelper;
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.CreateNewComponentEvent;
 import swingProject.events.guiEvents.UpdateComponentEvent;
@@ -99,7 +100,7 @@ public class PowerSupplyDialog extends JDialog {
         });
 
         panel.setLayout(null);
-        panel.setMinimumSize(new Dimension(350, 450));
+        GuiHelper.setComponentSize(panel, new Dimension(350, 450));
 
         JLabel powSupplyLabel = new JLabel("Блок питания");
         powSupplyLabel.setBounds(100, 5, 260, 20);
