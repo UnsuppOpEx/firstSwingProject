@@ -4,7 +4,7 @@ import swingProject.commons.Actions;
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.GuiEvent;
 
-public class PowerSupplyEditEvent extends GuiEvent {
+public final class PowerSupplyEditEvent extends GuiEvent {
 
     private PowerSupply powerSupply;
     private Actions actions;

@@ -5,7 +5,7 @@ import swingProject.events.guiEvents.GuiEvent;
 /**
  * Удалить выбранный Блок питания
  */
-public class PowerSupplyRemoveEvent extends GuiEvent {
+public final class PowerSupplyRemoveEvent extends GuiEvent {
 
     private int index;
 

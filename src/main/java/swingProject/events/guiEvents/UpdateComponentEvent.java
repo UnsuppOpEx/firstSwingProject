@@ -2,7 +2,7 @@ package swingProject.events.guiEvents;
 
 import swingProject.entities.computerComponents.PowerSupply;
 
-public class UpdateComponentEvent extends GuiEvent {
+public final class UpdateComponentEvent extends GuiEvent {
 
     private PowerSupply powerSupply;
     private int index;

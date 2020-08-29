@@ -5,5 +5,5 @@ import swingProject.events.guiEvents.GuiEvent;
 /**
  * Внести изменения в Блок питания
  */
-public class PowerSupplyUpdateEvent extends GuiEvent {
+public final class PowerSupplyUpdateEvent extends GuiEvent {
 }
