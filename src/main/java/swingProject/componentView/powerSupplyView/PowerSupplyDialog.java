@@ -1,8 +1,8 @@
 package swingProject.componentView.powerSupplyView;
 
+import net.miginfocom.swing.MigLayout;
 import swingProject.commons.Actions;
 import swingProject.commons.ComponentDialog;
-import swingProject.commons.GuiHelper;
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.CreateNewComponentEvent;
 import swingProject.events.guiEvents.UpdateComponentEvent;
@@ -18,7 +18,6 @@ import java.awt.event.ActionListener;
  */
 public class PowerSupplyDialog extends JDialog {
     private ComponentDialog componentDialog;
-    private JPanel panel;
     private JTextField brandTextField;
     private JTextField modelTextField;
     private JTextField yearTextField;
@@ -36,24 +35,10 @@ public class PowerSupplyDialog extends JDialog {
 
     public PowerSupplyDialog(Frame owner, String title, boolean modal, PowerSupply powerSupply, Actions actions, int index) {
         super(owner, title, modal);
+        componentDialog = new ComponentDialog();
         powerSupplyEdit = powerSupply;
         actionsValue = actions;
         indexEdit = index;
-
-        componentDialog = new ComponentDialog();
-        panel = new JPanel();
-        kpdGroup = new ButtonGroup();
-        pfcGroup = new ButtonGroup();
-
-        /**
-         * Закрыть диалоговое окно
-         */
-        componentDialog.addActionListenerForButtonNo(
-                actionEvent -> {
-                    setVisible(false);
-                    dispose();
-                }
-        );
 
         /**
          *  Создание и добавление нового элемента PowerSupply в таблицу
@@ -99,75 +84,17 @@ public class PowerSupplyDialog extends JDialog {
             }
         });
 
-        panel.setLayout(null);
-        GuiHelper.setComponentSize(panel, new Dimension(350, 450));
+        /**
+         * Закрыть диалоговое окно
+         */
+        componentDialog.addActionListenerForButtonNo(
+                actionEvent -> {
+                    setVisible(false);
+                    dispose();
+                }
+        );
 
-        JLabel powSupplyLabel = new JLabel("Блок питания");
-        powSupplyLabel.setBounds(100, 5, 260, 20);
-
-        JLabel brandLabel = new JLabel("Бренд");
-        brandLabel.setBounds(20, 55, 260, 20);
-        brandTextField = new JTextField();
-        brandTextField.setBounds(120, 55, 150, 20);
-
-        JLabel modelLabel = new JLabel("Модель");
-        modelLabel.setBounds(20, 95, 260, 20);
-        modelTextField = new JTextField();
-        modelTextField.setBounds(120, 95, 150, 20);
-
-        JLabel yearLabel = new JLabel("Год производ.");
-        yearLabel.setBounds(20, 135, 260, 20);
-        yearTextField = new JTextField();
-        yearTextField.setBounds(120, 135, 150, 20);
-
-        JLabel wattLabel = new JLabel("Мощность");
-        wattLabel.setBounds(20, 175, 260, 20);
-        wattTextField = new JTextField();
-        wattTextField.setBounds(120, 175, 150, 20);
-
-        JLabel kpdLabel = new JLabel("КПД 80+");
-        kpdLabel.setBounds(20, 215, 260, 20);
-        kpdRadioButton = new JRadioButton("Да", false);
-        kpdRadioButton1 = new JRadioButton("Нет", true);
-
-        kpdGroup.add(kpdRadioButton);
-        kpdGroup.add(kpdRadioButton1);
-        kpdRadioButton.setBounds(130, 215, 60, 20);
-        kpdRadioButton1.setBounds(200, 215, 60, 20);
-
-        JLabel pfcLabel = new JLabel("PFC");
-        pfcLabel.setBounds(20, 255, 260, 20);
-        pfcRadioButton = new JRadioButton("Да", false);
-        pfcRadioButton1 = new JRadioButton("Нет", true);
-
-        pfcGroup.add(pfcRadioButton);
-        pfcGroup.add(pfcRadioButton1);
-        pfcRadioButton.setBounds(130, 255, 60, 20);
-        pfcRadioButton1.setBounds(200, 255, 60, 20);
-
-        if (powerSupplyEdit != null) {
-            setFieldsForDialog(powerSupplyEdit);
-        }
-
-        panel.add(kpdRadioButton);
-        panel.add(kpdRadioButton1);
-        panel.add(pfcRadioButton);
-        panel.add(pfcRadioButton1);
-
-        panel.add(brandTextField);
-        panel.add(modelTextField);
-        panel.add(yearTextField);
-        panel.add(wattTextField);
-
-        panel.add(powSupplyLabel);
-        panel.add(brandLabel);
-        panel.add(modelLabel);
-        panel.add(yearLabel);
-        panel.add(wattLabel);
-        panel.add(kpdLabel);
-        panel.add(pfcLabel);
-
-        add(panel);
+        add(createGUI());
         add(componentDialog, BorderLayout.SOUTH);
 
         setResizable(false);
@@ -188,12 +115,79 @@ public class PowerSupplyDialog extends JDialog {
         kpdRadioButton.setSelected(powerSupplyEdit.isCertify80Plus());
         pfcRadioButton.setSelected(powerSupplyEdit.isPFC());
 
-//    public static void main(String[] args) {
-//                new PowerSupplyDialog(null, "", true);
-//
-//            }
+    }
+
+    /**
+     * Создание панели с элементами GUI
+     * @return
+     */
+    private JPanel createGUI () {
+
+        JPanel mainPanel = new JPanel (),
+
+                componentPanel = new JPanel (new MigLayout());
+
+        kpdGroup = new ButtonGroup();
+        pfcGroup = new ButtonGroup();
+
+        JLabel confirmLabel = new JLabel ("Блоки питания");
+
+        JLabel brandLabel = new JLabel("Бренд");
+        brandTextField = new JTextField("", 15);
+
+        JLabel modelLabel = new JLabel("Модель");
+        modelTextField = new JTextField("", 15);
+
+        JLabel yearLabel = new JLabel("Год производ.");
+        yearTextField = new JTextField("", 15);
+
+        JLabel wattLabel = new JLabel("Мощность");
+        wattTextField = new JTextField("", 15);
+
+        JLabel kpdLabel = new JLabel("КПД 80+");
+        kpdRadioButton = new JRadioButton("Да", false);
+        kpdRadioButton1 = new JRadioButton("Нет", true);
+
+        kpdGroup.add(kpdRadioButton);
+        kpdGroup.add(kpdRadioButton1);
+
+        JLabel pfcLabel = new JLabel("PFC");
+        pfcRadioButton = new JRadioButton("Да", false);
+        pfcRadioButton1 = new JRadioButton("Нет", true);
+
+        pfcGroup.add(pfcRadioButton);
+        pfcGroup.add(pfcRadioButton1);
+
+        if (powerSupplyEdit != null) {
+            setFieldsForDialog(powerSupplyEdit);
+        }
+
+        mainPanel.add(confirmLabel, BorderLayout.NORTH);
+
+        componentPanel.add (brandLabel);
+        componentPanel.add (brandTextField, "gaptop 15, wrap 15");
+        componentPanel.add (modelLabel);
+        componentPanel.add (modelTextField, "wrap 15");
+        componentPanel.add (yearLabel);
+        componentPanel.add (yearTextField, "wrap 15");
+        componentPanel.add (wattLabel);
+        componentPanel.add (wattTextField, "wrap 15");
+        componentPanel.add(kpdLabel);
+        componentPanel.add(kpdRadioButton, "split 2");
+        componentPanel.add(kpdRadioButton1,"gapleft 50, wrap 15");
+        componentPanel.add(pfcLabel);
+        componentPanel.add(pfcRadioButton, "split 2");
+        componentPanel.add(pfcRadioButton1,"gapleft 50, wrap 60");
+
+        mainPanel.add(componentPanel);
+
+        return mainPanel;
 
     }
+
+//    public static void main(String[] args) {
+//        new PowerSupplyDialog(null, "Редактирование компонента",true,null, null, 0);
+//    }
 }
 
 
