@@ -52,12 +52,23 @@ public class PowerSupplyDialog extends JDialog {
 
                 try {
                     year = Integer.parseInt(yearTextField.getText());
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "Введены неправильные параметры в поле \"Год производства\"",
+                            "Ошибка",
+                            JOptionPane.ERROR_MESSAGE
+                    );
+                    return;
+                }
+
+                try {
                     watt = Integer.parseInt(wattTextField.getText());
                 } catch (NumberFormatException ex) {
                     JOptionPane.showMessageDialog(
                             null,
-                            "Введены неправильные параметры",
-                            "Message",
+                            "Введены неправильные параметры в поле \"Мощность\"",
+                            "Ошибка",
                             JOptionPane.ERROR_MESSAGE
                     );
                     return;
