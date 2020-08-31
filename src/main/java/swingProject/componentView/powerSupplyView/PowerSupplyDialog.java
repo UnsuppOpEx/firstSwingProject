@@ -113,7 +113,9 @@ public class PowerSupplyDialog extends JDialog {
         add(componentDialog, BorderLayout.SOUTH);
 
         setResizable(false);
-        setSize(new Dimension(300, 400));
+        setPreferredSize(new Dimension(300, 400));
+        setMinimumSize(new Dimension(300, 400));
+        setMaximumSize(new Dimension(300, 400));
         setVisible(true);
     }
 

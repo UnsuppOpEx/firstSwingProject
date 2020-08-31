@@ -2,6 +2,7 @@ package swingProject.componentView.powerSupplyView;
 
 import swingProject.commons.ActionButtonPanel;
 import swingProject.commons.Actions;
+import swingProject.commons.GuiHelper;
 import swingProject.componentView.powerSupplyView.tableModel.PowerSupplyTableModel;
 import swingProject.entities.computerComponents.PowerSupply;
 import swingProject.events.guiEvents.SetComponentsChoiceEvent;
@@ -56,18 +57,21 @@ public class PowerSupplyView extends JPanel {
         /**
          * Создает диалоговое окно для редактирования выбранного блока питания
          */
-        actionButtonPanel.addActionListenerForEditButton(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GuiEventHandlers.parseEvent(
-                        new PowerSupplyEditEvent(
-                                powerSupplyTableModel.getList(
-                                        powerSupplyTable.getSelectedRow()),
-                                            Actions.UPDATE_ACTION,
-                                                powerSupplyTable.getSelectedRow())
-                );
-            }
-        });
+            actionButtonPanel.addActionListenerForEditButton(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(powerSupplyTable.getSelectedRow() >= 0) {
+                        GuiEventHandlers.parseEvent(
+                                new PowerSupplyEditEvent(
+                                        powerSupplyTableModel.getList(
+                                                powerSupplyTable.getSelectedRow()),
+                                        Actions.UPDATE_ACTION,
+                                        powerSupplyTable.getSelectedRow())
+                        );
+                    }
+                }
+            });
+
 
         /**
          * Создает диалоговое окно для добавления нового компонента
@@ -130,8 +134,8 @@ public class PowerSupplyView extends JPanel {
      * Создаёт новое диалоговое окно для добавления компонента
      */
     public void createPowerSupplyDialog() {
-        dialog = new PowerSupplyDialog(null,"Добавление компонента",true, null, null, 0);
-
+        dialog = new PowerSupplyDialog(
+                null,"Добавление компонента",true, null, null, 0);
         }
 
     /**
