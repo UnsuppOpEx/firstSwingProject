@@ -1,0 +1,54 @@
+<changelist name="Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]" date="1598782037673" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 30.08.2020 13:07 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/tableModel/PowerSupplyTableModel.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/tableModel/PowerSupplyTableModel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/PowerSupplyTableModel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/utils/handlers/GuiEventHandlers.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/utils/handlers/GuiEventHandlers.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/GuiEventHandlers.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/PowerSupplyDialog.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/PowerSupplyDialog.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/PowerSupplyDialog.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/gui/MainFrame.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/gui/MainFrame.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/MainFrame.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/events/powerSupplyEvent/PowerSupplyEditEvent.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/events/powerSupplyEvent/PowerSupplyEditEvent.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/PowerSupplyEditEvent.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/SwingProject.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/SwingProject.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/SwingProject.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/PowerSupplyDialog$1.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/PowerSupplyDialog$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/PowerSupplyDialog$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/PowerSupplyView$1.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/PowerSupplyView$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/PowerSupplyView$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/PowerSupplyView.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/componentView/powerSupplyView/PowerSupplyView.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/PowerSupplyView.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/SwingProject/swingProject/events/guiEvents/UpdateComponentEvent.class" />
+    <option name="AFTER_PATH" value="out/production/SwingProject/swingProject/events/guiEvents/UpdateComponentEvent.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30_08_2020_13_07_[Default_Changelist]/UpdateComponentEvent.class" />
+  </binary>
+</changelist>
