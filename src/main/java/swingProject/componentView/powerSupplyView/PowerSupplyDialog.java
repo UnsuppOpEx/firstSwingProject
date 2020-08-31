@@ -80,18 +80,22 @@ public class PowerSupplyDialog extends JDialog {
                 boolean kpd = kpdRadioButton.isSelected();
                 boolean pfc = pfcRadioButton.isSelected();
 
-                if(actions == Actions.UPDATE_ACTION) {
+                if(actions == Actions.UPDATE_ACTION && !brand.isEmpty() && !model.isEmpty()) {
                     GuiEventHandlers.parseEvent(new UpdateComponentEvent(new PowerSupply(
                             brand, model, year, watt, kpd, pfc) , indexEdit));
+                        dispose();
                 }
 
                 else
-                    GuiEventHandlers.parseEvent(new CreateNewComponentEvent(
-                        new PowerSupply(
-                                brand, model, year, watt, kpd, pfc))
-                );
-                setVisible(false);
-                dispose();
+                    if(!brand.isEmpty() && !model.isEmpty()) {
+                        GuiEventHandlers.parseEvent(new CreateNewComponentEvent(
+                                new PowerSupply(
+                                        brand, model, year, watt, kpd, pfc))
+                        );
+                        dispose();
+                    }
+                    else
+                        return;
             }
         });
 
@@ -120,7 +124,7 @@ public class PowerSupplyDialog extends JDialog {
 
         brandTextField.setText(powerSupplyEdit.getManufacturer());
         modelTextField.setText(String.valueOf(powerSupplyEdit.getModel()));
-        modelTextField.setEnabled(false);
+//        modelTextField.setEnabled(false);
         yearTextField.setText(String.valueOf(powerSupplyEdit.getYearRelease()));
         wattTextField.setText(String.valueOf(powerSupplyEdit.getNominalWatt()));
         kpdRadioButton.setSelected(powerSupplyEdit.isCertify80Plus());
